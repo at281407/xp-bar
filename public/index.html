@@ -22,7 +22,22 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAh7ssN8Jt8ywDtNUznq58sfyvya-mdRZ4",
+        authDomain: "xp-bar.firebaseapp.com",
+        databaseURL: "https://xp-bar.firebaseio.com",
+        projectId: "xp-bar",
+        storageBucket: "xp-bar.appspot.com",
+        messagingSenderId: "965104940223"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
+    <title>Xp Bar</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
