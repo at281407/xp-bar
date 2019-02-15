@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {Svg} from '../Elements/Svg.sc';
+import {Svg} from '../_Elements/Svg.sc';
 
 class ShipSvg extends Component {
   render () {

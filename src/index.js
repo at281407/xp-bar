@@ -2,14 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {App} from './App.sc.js';
+
+import { Provider } from 'react-redux'
+import configureStore from './Redux/store';
+
 import XpBar from './Components/Bar/XpBar';
 import * as serviceWorker from './serviceWorker';
 
 function AppContainer() {
     return (
+        <Provider store={configureStore()} >
         <App>
-            <XpBar />
+             <XpBar />
         </App>
+        </Provider>
     );
 }
 

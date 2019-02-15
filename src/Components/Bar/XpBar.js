@@ -6,7 +6,7 @@ import {Bar} from './index.sc';
 
 import ShipSvg from './Ship.svg';
 
-class XpBar extends Component {
+class XpBarComp extends Component {
 
   state = {
     currXp: 0,
@@ -81,12 +81,12 @@ class XpBar extends Component {
 
       let currXp = this.state.currXp - this.state.currLevel.xpFloor;
       let goal = this.state.currLevel.nextLevel - this.state.currLevel.xpFloor
-      let floor = this.state.currLevel
 
       let percent = (currXp/goal) * 100;
       console.log(percent); 
 
       return (
+          
           <Bar>
             <h1>Level: {this.state.currLevel.level}</h1>
             <h3>XP: {this.state.currXp}</h3>
@@ -104,4 +104,4 @@ class XpBar extends Component {
   }
 }
 
-export default XpBar;
+export default XpBarComp;
