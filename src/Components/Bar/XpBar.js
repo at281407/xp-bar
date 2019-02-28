@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import {getCurrentLevel} from '../../Services/getCurrentLevel';
 
+import Header from '../Header/index';
+
 import {Bar} from './index.sc';
 
 import ShipSvg from './Ship.svg';
@@ -9,7 +11,7 @@ import ShipSvg from './Ship.svg';
 class XpBarComp extends Component {
 
   state = {
-    currXp: 0,
+    currXp: 300,
     isReseting: false,
     currLevel: {
       level: null,
@@ -23,7 +25,7 @@ class XpBarComp extends Component {
     let localXp = localStorage.getItem('xp');
     if(localXp){
       this.setState({
-        currXp: localXp,
+        currXp: parseInt(localXp),
         currLevel: getCurrentLevel(localXp)
       });
     }
@@ -44,18 +46,22 @@ class XpBarComp extends Component {
       })
     */ 
     if(!this.state.currLevel.level){
-      console.log(this.state.currXp);
+      console.log("getting current level:", this.state.currXp);
       let level = getCurrentLevel(this.state.currXp);
       console.log(level);
       this.setState({
         currLevel: level
       })
     }
+
+    console.log("setting local storage");
+    localStorage.setItem('xp', this.state.currXp);
   }
 
 
   handleClick = () => {
-    let newXp = this.state.currXp + 100;
+    let newXp = this.state.currXp + 234;
+    console.log("NewXp",newXp, typeof this.state.currXp);
     if(newXp >= this.state.currLevel.nextLevel){
       newXp = this.state.currLevel.nextLevel;
       let reLevel = getCurrentLevel(newXp);
@@ -67,6 +73,9 @@ class XpBarComp extends Component {
           isResting: true
         });
       }.bind(this), 1000);
+      this.setState({
+        
+      })
     } else {
       let reLevel = getCurrentLevel(newXp);
       this.setState({
@@ -89,8 +98,6 @@ class XpBarComp extends Component {
           
           <Bar>
             <h1>Level: {this.state.currLevel.level}</h1>
-            <h3>XP: {this.state.currXp}</h3>
-            <h3>Next: {this.state.currLevel.nextLevel}</h3>
             <ShipSvg margin="0 auto" display="block" />
             <Bar.FillContainer>
                 <Bar.CurrXp>{this.state.currXp} / {this.state.currLevel.nextLevel}</Bar.CurrXp>

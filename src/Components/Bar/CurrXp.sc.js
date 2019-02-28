@@ -6,5 +6,4 @@ export const CurrXp = styled.h4`
     position: absolute;
     margin: 12px 0;
     left: calc(50% - 30px);
-    z-index: 100;
 `;
