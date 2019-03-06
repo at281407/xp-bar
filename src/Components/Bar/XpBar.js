@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import firebase from '../../firebase';
+
+import {setCurrLevelAction} from '../../Redux/actions/XpBar/setCurrLevelAction'
+import {setCurrXpAction} from '../../Redux/actions/XpBar/setCurrXpAction'
 
 import {getCurrentLevel} from '../../Services/getCurrentLevel';
 
@@ -11,27 +16,28 @@ import ShipSvg from './Ship.svg';
 class XpBarComp extends Component {
 
   state = {
-    currXp: 300,
-    isReseting: false,
-    currLevel: {
-      level: null,
-      xpFloor: null,
-      nextLevel: null
-    }
+    newXpInput: 0
   }
 
-  componentWillMount = () => {
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.handleXpStore);
+  }
+
+  componentWillMount() {
 
     let localXp = localStorage.getItem('xp');
+    /* If local XP is stored, get current XP from local storage) */
     if(localXp){
-      this.setState({
-        currXp: parseInt(localXp),
-        currLevel: getCurrentLevel(localXp)
-      });
+      console.log("setting curr xp and level");
+      this.props.setCurrXpAction(localXp);
+
+      let newLevel = getCurrentLevel(localXp);
+      this.props.setCurrLevelAction(newLevel);
     }
 
-    /* If state from local store exists{
-         get state from localStorage
+
+    /* If props from local store exists{
+         get props from localStorage
       }
       else {
         create local storage
@@ -39,57 +45,46 @@ class XpBarComp extends Component {
       fetch json from api
       .then(result => {
           let level = getCurrLevel(reult.currXp);
-          this.setState({
+          this.setprops({
             currXp: result.currXp
             currLevel: getCurrLevel(result.currXp)
           })
       })
     */ 
-    if(!this.state.currLevel.level){
-      console.log("getting current level:", this.state.currXp);
-      let level = getCurrentLevel(this.state.currXp);
-      console.log(level);
-      this.setState({
-        currLevel: level
-      })
-    }
-
-    console.log("setting local storage");
-    localStorage.setItem('xp', this.state.currXp);
   }
 
+  componentWillUnmount() {
+    this.handleClick();
+    window.removeEventListener('beforeunload', this.handleXpStore);
+  }
 
   handleClick = () => {
-    let newXp = this.state.currXp + 234;
-    console.log("NewXp",newXp, typeof this.state.currXp);
-    if(newXp >= this.state.currLevel.nextLevel){
-      newXp = this.state.currLevel.nextLevel;
+    let newXp = this.state.newXpInput;
+    console.log("NewXp",newXp, typeof this.props.currXp);
+    if(newXp >= this.props.currLevel.nextLevel){
+      newXp = this.props.currLevel.nextLevel;
       let reLevel = getCurrentLevel(newXp);
-      this.setState({ currXp: newXp });
+      this.props.setCurrXpAction(newXp);
       setTimeout(function() {
-        alert("Level Up!");
-        this.setState({
-          currLevel: reLevel,
-          isResting: true
-        });
+        this.props.setCurrLevelAction(reLevel);
       }.bind(this), 1000);
-      this.setState({
-        
-      })
     } else {
+      this.props.setCurrXpAction(newXp);
+
       let reLevel = getCurrentLevel(newXp);
-      this.setState({
-        currXp: newXp,
-        currLevel: reLevel
-      })
+      this.props.setCurrLevelAction(reLevel);
     }
+  }
+
+  handleXpStore = () => {
+    localStorage.setItem('xp', this.props.currXp);
   }
 
   render () {
-    if(this.state.currLevel.level){
+    if(this.props.currLevel.level){
 
-      let currXp = this.state.currXp - this.state.currLevel.xpFloor;
-      let goal = this.state.currLevel.nextLevel - this.state.currLevel.xpFloor
+      let currXp = this.props.currXp - this.props.currLevel.xpFloor;
+      let goal = this.props.currLevel.nextLevel - this.props.currLevel.xpFloor
 
       let percent = (currXp/goal) * 100;
       console.log(percent); 
@@ -97,12 +92,16 @@ class XpBarComp extends Component {
       return (
           
           <Bar>
-            <h1>Level: {this.state.currLevel.level}</h1>
+            <h1>Level: {this.props.currLevel.level}</h1>
             <ShipSvg margin="0 auto" display="block" />
             <Bar.FillContainer>
-                <Bar.CurrXp>{this.state.currXp} / {this.state.currLevel.nextLevel}</Bar.CurrXp>
-                <Bar.Fill isReseting={this.state.isReseting} percent={percent + "%"} />
+                <Bar.CurrXp>{this.props.currXp} / {this.props.currLevel.nextLevel}</Bar.CurrXp>
+                <Bar.Fill isReseting={this.props.isReseting} percent={percent + "%"} />
             </Bar.FillContainer>
+            <input 
+                type="text" 
+                value={this.state.newXpInput} 
+                onChange={(e) => this.setState({newXpInput: e.target.value})} />
             <button onClick={this.handleClick}>Inc XP +100</button>
           </Bar>
       )
@@ -111,4 +110,13 @@ class XpBarComp extends Component {
   }
 }
 
-export default XpBarComp;
+export default connect(
+  (props) => ({
+    currXp: props.xpBarReducer.currXp,
+    currLevel: props.xpBarReducer.currLevel
+  }),
+  {
+    setCurrLevelAction,
+    setCurrXpAction
+  }
+)(XpBarComp);;

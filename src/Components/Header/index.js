@@ -11,7 +11,7 @@ class HeaderComp extends Component {
   render () {
     return (
         <Header>
-            <SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction(true)}></SvgIcon>
+            <SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction('login', true)}></SvgIcon>
         </Header>
     )
   }

@@ -8,5 +8,7 @@ const config = {
     storageBucket: "xp-bar.appspot.com",
     messagingSenderId: "965104940223"
 };
+
 firebase.initializeApp(config);
+
 export default firebase;

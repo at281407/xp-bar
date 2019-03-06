@@ -12,12 +12,13 @@ const hideModal = (time) => dispatch => {
 }
 
 
-export const toggleModalAction = (activityBool, delayTime) => dispatch => {
+export const toggleModalAction = (type, activityBool, delayTime) => dispatch => {
     //If true
     if(activityBool){
         return dispatch({
             type: types.SHOW_MODAL,
             payload: {
+                modalType: type,
                 modalActivityBool: activityBool
             }
         });
