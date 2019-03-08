@@ -21,6 +21,14 @@ class XpBarComp extends Component {
 
   componentDidMount() {
     window.addEventListener('beforeunload', this.handleXpStore);
+    const rootRef = firebase.database().ref();
+    const xpRef = rootRef.child('xp');
+    xpRef.on('value', snap => {
+      console.log("Snapshot", snap.val());
+      this.props.setCurrXpAction(snap.val());
+      let newLevelFromDb = getCurrentLevel(snap.val());
+      this.props.setCurrLevelAction(newLevelFromDb );
+    })
   }
 
   componentWillMount() {
@@ -74,6 +82,8 @@ class XpBarComp extends Component {
       let reLevel = getCurrentLevel(newXp);
       this.props.setCurrLevelAction(reLevel);
     }
+    const itemsRef = firebase.database().ref('xp');
+    itemsRef.push(newXp);
   }
 
   handleXpStore = () => {
@@ -81,7 +91,7 @@ class XpBarComp extends Component {
   }
 
   render () {
-    if(this.props.currLevel.level){
+    if(this.props.currLevel){
 
       let currXp = this.props.currXp - this.props.currLevel.xpFloor;
       let goal = this.props.currLevel.nextLevel - this.props.currLevel.xpFloor
@@ -92,17 +102,12 @@ class XpBarComp extends Component {
       return (
           
           <Bar>
-            <h1>Level: {this.props.currLevel.level}</h1>
+            <h1>Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</h1>
             <ShipSvg margin="0 auto" display="block" />
             <Bar.FillContainer>
                 <Bar.CurrXp>{this.props.currXp} / {this.props.currLevel.nextLevel}</Bar.CurrXp>
                 <Bar.Fill isReseting={this.props.isReseting} percent={percent + "%"} />
             </Bar.FillContainer>
-            <input 
-                type="text" 
-                value={this.state.newXpInput} 
-                onChange={(e) => this.setState({newXpInput: e.target.value})} />
-            <button onClick={this.handleClick}>Inc XP +100</button>
           </Bar>
       )
     }
