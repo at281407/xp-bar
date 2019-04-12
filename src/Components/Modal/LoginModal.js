@@ -22,6 +22,9 @@ class LoginModal extends Component {
       this.props.toggleModalAction(null, false);
   }
 
+  handleClick = () => {
+      alert(this.state.username);
+  }
   handleInputChange = (e) =>{
     this.setState({
         [e.target.name]: e.target.value
@@ -65,7 +68,7 @@ class LoginModal extends Component {
                         })}
                     />
                 </Modal.FieldGroup>
-                <Modal.Submit type="submit" value="Log In" />
+                <Modal.Submit type="submit" value="Log In" onClick={this.handleClick}/>
             </Modal.Form>
         </Login>
     )
