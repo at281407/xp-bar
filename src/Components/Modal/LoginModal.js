@@ -68,7 +68,6 @@ class LoginModal extends Component {
                         })}
                     />
                 </Modal.FieldGroup>
-                <Modal.Submit type="submit" value="Log In" onClick={this.handleClick}/>
             </Modal.Form>
         </Login>
     )

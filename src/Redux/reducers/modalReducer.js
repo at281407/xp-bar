@@ -2,9 +2,9 @@ import { SHOW_MODAL, HIDE_MODAL, DEACTIVATE_MODAL } from '../actions/actionTypes
 
 let initState = {
     // Global Modal
-    modalType: "login",
-    isActive: false,
-    isVisible: false,
+    modalType: "levelUp",
+    isActive: true,
+    isVisible: true,
 }
 
 export const modalReducer = (state = initState, action) => {

@@ -6,6 +6,7 @@ import FanFare from '../../Assets/Sounds/LevelUp.wav';
 
 import {setCurrLevelAction} from '../../Redux/actions/XpBar/setCurrLevelAction'
 import {setCurrXpAction} from '../../Redux/actions/XpBar/setCurrXpAction'
+import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import {getCurrentLevel} from '../../Services/getCurrentLevel';
 
@@ -36,6 +37,7 @@ class XpBarComp extends Component {
         this.props.setCurrXpAction(newXp);
         setTimeout(function() {
           this.state.fanFare.play();
+          this.props.toggleModalAction("levelUp", true);
           this.props.setCurrLevelAction(reLevel);
         }.bind(this), 1000);
       }
@@ -58,23 +60,6 @@ class XpBarComp extends Component {
       let newLevel = getCurrentLevel(localXp);
       this.props.setCurrLevelAction(newLevel);
     }
-
-
-    /* If props from local store exists{
-         get props from localStorage
-      }
-      else {
-        create local storage
-      }
-      fetch json from api
-      .then(result => {
-          let level = getCurrLevel(reult.currXp);
-          this.setprops({
-            currXp: result.currXp
-            currLevel: getCurrLevel(result.currXp)
-          })
-      })
-    */ 
   }
 
   componentWillUnmount() {
@@ -143,6 +128,7 @@ export default connect(
   }),
   {
     setCurrLevelAction,
-    setCurrXpAction
+    setCurrXpAction,
+    toggleModalAction
   }
 )(XpBarComp);;

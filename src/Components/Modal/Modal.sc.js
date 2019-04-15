@@ -11,6 +11,7 @@ import { Input } from '../_Elements/Form/Input.sc';
 import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
 import { Submit } from '../_Elements/Form/Submit.sc';
+import { Quote } from '../_Elements/Fonts/Quote.sc';
 
 export const Modal = styled.div`
     display: flex;
@@ -29,10 +30,12 @@ export const Modal = styled.div`
 Modal.Overlay = Overlay
 Modal.Box = Box
 Modal.Close = SvgIcon
+Modal.Icon = SvgIcon
 Modal.Heading = Heading
+Modal.Quote = Quote;
 Modal.Form = Form;
 Modal.FormRow = FlexRow;
 Modal.FieldGroup = FlexCol;
 Modal.Input = Input;
 Modal.Label = Label;
-Modal.Submit = Submit;
+Modal.Button = Submit;

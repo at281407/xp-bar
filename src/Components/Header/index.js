@@ -10,8 +10,8 @@ import {SvgIcon} from '../_Elements/Icon.sc';
 class HeaderComp extends Component {
   render () {
     return (
-        <Header className="class haha">
-            <SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction('login', true)}></SvgIcon>
+        <Header>
+            {/*<SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction('login', true)}></SvgIcon>*/}
         </Header>
     )
   }
