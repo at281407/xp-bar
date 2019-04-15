@@ -1,1 +1,0 @@
-I wanted a way to track my party's XP in a public way, but my original spreadsheet idea fealt
