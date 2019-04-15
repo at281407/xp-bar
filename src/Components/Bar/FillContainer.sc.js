@@ -6,5 +6,4 @@ export const FillContainer = styled.div`
     height: 100%;
     border: 3px solid rgba(241,231,103,1);
     border-image: url('/images/gold.jpg') 30;
-    border-radius: 25px;
 `;

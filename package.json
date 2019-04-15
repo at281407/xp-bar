@@ -2,7 +2,7 @@
   "name": "xp-bar",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://at281407.github.io/xp-bar/",
+  "homepage": "https://at281407.github.io/xp-bar/.",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
@@ -33,6 +33,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "firebase": "^5.8.5"
+    "firebase": "^5.8.5",
+    "gh-pages": "^2.0.1"
   }
 }
