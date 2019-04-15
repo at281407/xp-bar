@@ -27,7 +27,7 @@ class LevelUpModal extends Component {
         <LevelUp>
             <Skull />
             <Modal.Heading textAlign="center" margin="0.5em 0">Ye be level 5 now!</Modal.Heading>
-            <Modal.Quote textAlign="Center"  margin="0.5em 0">In an honest service there is thing commons, low wages, and hard labor...No, a merry life and a short one, shall be my motto.</Modal.Quote>
+            <Modal.Quote textAlign="Center"  margin="0.5em 0">In an honest service there is thin commons, low wages, and hard labor...No, a merry life and a short one, shall be my motto.</Modal.Quote>
             <Modal.Button onClick={this.props.toggleModalAction} width="60%">Continue</Modal.Button>
         </LevelUp>
     )
