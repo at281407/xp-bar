@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 
+import FanFare from '../../Assets/Sounds/LevelUp.wav';
+
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import {Modal} from './Modal.sc';
@@ -12,15 +14,19 @@ export const LevelUp = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: middle;
-    padding: 1em;
     width: 100%;
     height: 100%;
 `;
 
 class LevelUpModal extends Component {
 
-  handleClick = () => {
+  state = {
+    newXpInput: 0,
+    fanFare: new Audio(FanFare)
+  }
 
+  componentDidMount () {
+    this.state.fanFare.play();
   }
 
   render () {

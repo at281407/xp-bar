@@ -28,17 +28,16 @@ class XpBarComp extends Component {
     const rootRef = firebase.database().ref();
     const xpRef = rootRef.child('xp');
     xpRef.on('value', snap => {
-      console.log("Snapshot", snap.val());
       this.props.setCurrXpAction(snap.val());
-
       if(snap.val() >= this.props.currLevel.nextLevel){
         let newXp = this.props.currLevel.nextLevel;
-        let reLevel = getCurrentLevel(snap.val());
         this.props.setCurrXpAction(newXp);
         setTimeout(function() {
-          this.state.fanFare.play();
+          console.log("Before Levelup", snap.val());
+          let leftOverXp = getCurrentLevel(snap.val());
+          this.props.setCurrLevelAction(leftOverXp);
+          this.props.setCurrXpAction(snap.val());
           this.props.toggleModalAction("levelUp", true);
-          this.props.setCurrLevelAction(reLevel);
         }.bind(this), 1000);
       }
       else {
@@ -63,31 +62,7 @@ class XpBarComp extends Component {
   }
 
   componentWillUnmount() {
-    this.handleClick();
     window.removeEventListener('beforeunload', this.handleXpStore);
-  }
-
-  handleClick = () => {
-    let newXp = this.state.newXpInput;
-    console.log("NewXp",newXp, typeof this.props.currXp);
-    // Leveling Up
-    if(newXp >= this.props.currLevel.nextLevel){
-      alert("Leveling up soon");
-      newXp = this.props.currLevel.nextLevel;
-      let reLevel = getCurrentLevel(newXp);
-      this.props.setCurrXpAction(newXp);
-      setTimeout(function() {
-        alert("Level Up!");
-        this.props.setCurrLevelAction(reLevel);
-      }.bind(this), 2000);
-    } else {
-      this.props.setCurrXpAction(newXp);
-
-      let reLevel = getCurrentLevel(newXp);
-      this.props.setCurrLevelAction(reLevel);
-    }
-    const itemsRef = firebase.database().ref('xp');
-    itemsRef.push(newXp);
   }
 
   handleXpStore = () => {
@@ -105,17 +80,21 @@ class XpBarComp extends Component {
       let percent = (currXp/goal) * 100;
       console.log(percent); 
 
-      return (
-
-          <Bar>
-            <Bar.Level width="80%">Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</Bar.Level>
-            <ShipSvg margin="0 auto" display="block" />
-            <Bar.FillContainer>
-                <Bar.CurrXp>{this.props.currXp} / {this.props.currLevel.nextLevel}</Bar.CurrXp>
-                <Bar.Fill isReseting={this.props.isReseting} percent={percent + "%"} />
-            </Bar.FillContainer>
-          </Bar>
-      )
+      if(this.props.currXp && this.props.currLevel){
+        return (
+            <Bar>
+              <Bar.Level width="80%">Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</Bar.Level>
+              <ShipSvg margin="0 auto" display="block" />
+              <Bar.FillContainer>
+                  <Bar.CurrXp>{this.props.currXp} / {this.props.currLevel.nextLevel}</Bar.CurrXp>
+                  <Bar.Fill isReseting={this.props.isReseting} percent={percent + "%"} />
+              </Bar.FillContainer>
+            </Bar>
+        )
+      }
+      else {
+        return <h1>Loading</h1>
+      }
     }
     else return <h1>Loading</h1>
   }
