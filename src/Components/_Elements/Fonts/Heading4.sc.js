@@ -1,0 +1,8 @@
+import styled from 'styled-components';
+
+export const Heading4 = styled.h4`
+    font-size: 20px;
+    width: ${props => props.width || "100%"};
+    text-align: center;
+    margin: ${props => props.margin || "0 auto"};
+`;
