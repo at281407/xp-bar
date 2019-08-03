@@ -34,6 +34,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
     "firebase": "^5.8.5"
   }
 }
