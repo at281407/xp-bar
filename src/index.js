@@ -15,11 +15,9 @@ import * as serviceWorker from './serviceWorker';
 
 function AppContainer() {
 
-    console.log(JSON.stringify(themes.swashbuckling));
-
     return (
         <Provider store={configureStore()} >
-            <ThemeProvider theme={themes.swashbuckling}>
+            <ThemeProvider theme={themes.highFantasy}>
                 <App>
                     <Header />
                     <XpBar />
