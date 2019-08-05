@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Heading = styled.h1`
+    color: #fff;
     font-size: 20px;
     width: ${props => props.width || "100%"};
     text-align: ${props => props.textAlign || "left"};

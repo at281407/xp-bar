@@ -6,8 +6,6 @@ import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import styled from 'styled-components';
 import {Modal} from './Modal.sc';
 
-import cancel from '../../Assets/images/cancel.svg'
-
 const Login = styled.div`
     width: 100%;
     height: 100%;
@@ -43,7 +41,7 @@ class LoginModal extends Component {
         <Login>
             <Modal.Form width="90%" onSubmit={this.handleSubmit}>
                 <Modal.FormRow>
-                    <Modal.Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" src={cancel} onClick={this.handleClose} />
+                     {/*<Modal.Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" onClick={this.handleClose} />*/}
                 </Modal.FormRow>
                 <Modal.Heading>Sign In</Modal.Heading>
                 <Modal.FieldGroup id="username" margin="0.25em 0">

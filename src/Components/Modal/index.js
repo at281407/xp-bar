@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import {Modal} from './Modal.sc';
-import LoginModal from './LoginModal';
+
 import LevelUpModal from './LevelUpModal';
 
 class ModalComp extends Component {
 
   renderModal = () => {
       switch(this.props.modalType){
-          case 'login':
-              return <LoginModal />
           case 'levelUp':
               return <LevelUpModal />
           default:

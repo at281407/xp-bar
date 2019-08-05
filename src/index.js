@@ -6,19 +6,24 @@ import {App} from './App.sc.js';
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store';
 
+import {ThemeProvider} from 'styled-components';
+import * as themes from './themes.sc';
 import Header from './Components/Header/index';
 import XpBar from './Components/Bar/XpBar';
 import Modal from './Components/Modal/index';
 import * as serviceWorker from './serviceWorker';
 
 function AppContainer() {
+
     return (
         <Provider store={configureStore()} >
-        <App>
-             <Header />
-             <XpBar />
-             <Modal />
-        </App>
+            <ThemeProvider theme={themes.highFantasy}>
+                <App>
+                    <Header />
+                    <XpBar />
+                    <Modal />
+                </App>
+            </ThemeProvider>
         </Provider>
     );
 }

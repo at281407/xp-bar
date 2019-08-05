@@ -13,8 +13,7 @@ import {getCurrentLevel} from '../../Services/getCurrentLevel';
 import Header from '../Header/index';
 
 import {Bar} from './index.sc';
-
-import ShipSvg from './Ship.svg';
+import {Emblem} from './Emblem.sc';
 
 class XpBarComp extends Component {
 
@@ -83,8 +82,8 @@ class XpBarComp extends Component {
       if(this.props.currXp && this.props.currLevel){
         return (
             <Bar>
-              <Bar.Level width="80%">Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</Bar.Level>
-              <ShipSvg margin="0 auto" display="block" />
+              <Bar.Level>Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</Bar.Level>
+              <Emblem />
               <Bar.FillContainer>
                   <Bar.CurrXp>{this.props.currXp} / {this.props.currLevel.nextLevel}</Bar.CurrXp>
                   <Bar.Fill isReseting={this.props.isReseting} percent={percent + "%"} />
