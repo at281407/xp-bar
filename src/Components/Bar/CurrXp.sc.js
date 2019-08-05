@@ -5,6 +5,6 @@ export const CurrXp = styled.h4`
     color: #ffc22a;
     position: absolute;
     margin: 12px 0;
-    width: 80%;
+    width: 100%;
     text-align: center;
 `;

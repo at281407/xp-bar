@@ -6,8 +6,9 @@ import {Fill} from './Fill.sc';
 import { Heading } from '../_Elements/Fonts/Heading.sc';
 
 export const Bar = styled.div`
-    width: 100%;
-    height: 50px;
+    top: calc(50% - 50px);
+    width: 80%;
+    margin: 0 auto;
 `;
 
 Bar.Level = Heading

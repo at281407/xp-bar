@@ -82,7 +82,7 @@ class XpBarComp extends Component {
       if(this.props.currXp && this.props.currLevel){
         return (
             <Bar>
-              <Bar.Level width="80%">Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</Bar.Level>
+              <Bar.Level>Level: {this.props.currLevel.level ? this.props.currLevel.level : null}</Bar.Level>
               <Emblem />
               <Bar.FillContainer>
                   <Bar.CurrXp>{this.props.currXp} / {this.props.currLevel.nextLevel}</Bar.CurrXp>

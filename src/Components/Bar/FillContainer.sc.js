@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import gold from '../../Assets/images/gold.jpg';
 
 export const FillContainer = styled.div`
-    width: ${props => props.percent || "80%"};
+    position: relative;
+    width: ${props => props.percent || "100%"};
     margin: 0 auto;
-    height: 101%;
+    height: 50px;
     border: 3px solid ${props => props.theme.borderColor};
+    border-radius: 5px;
 `;
