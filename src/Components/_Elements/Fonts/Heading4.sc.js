@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const Heading4 = styled.h4`
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
     font-size: 20px;
     width: ${props => props.width || "100%"};
     text-align: center;
