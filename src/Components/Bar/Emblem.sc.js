@@ -9,5 +9,5 @@ export const Emblem = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     margin: 0 auto;
-    z-index: 100;
+    z-index: 50;
 `;

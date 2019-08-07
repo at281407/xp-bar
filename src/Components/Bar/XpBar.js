@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import firebase from '../../firebase';
 
-import FanFare from '../../Assets/Sounds/LevelUp.wav';
-
 import {setCurrLevelAction} from '../../Redux/actions/XpBar/setCurrLevelAction'
 import {setCurrXpAction} from '../../Redux/actions/XpBar/setCurrXpAction'
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
@@ -18,8 +16,7 @@ import {Emblem} from './Emblem.sc';
 class XpBarComp extends Component {
 
   state = {
-    newXpInput: 0,
-    fanFare: new Audio(FanFare)
+    newXpInput: 0
   }
 
   componentDidMount() {
@@ -52,7 +49,6 @@ class XpBarComp extends Component {
     console.log("Getting current xp", localXp);
     /* If local XP is stored, get current XP from local storage) */
     if(localXp){
-      console.log("setting curr xp and level");
       this.props.setCurrXpAction(localXp);
 
       let newLevel = getCurrentLevel(localXp);

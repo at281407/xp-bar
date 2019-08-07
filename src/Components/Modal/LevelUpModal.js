@@ -7,13 +7,13 @@ import FanFare from '../../Assets/Sounds/LevelUp.wav';
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import {Modal} from './Modal.sc';
-import Skull from './Skull.svg';
+import {ReactComponent as Book} from '../../Assets/images/book.svg';
 
 export const LevelUp = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    align-items: middle;
+    align-items: flex-start;
     width: 100%;
     height: 100%;
 `;
@@ -32,10 +32,10 @@ class LevelUpModal extends Component {
   render () {
     return (
         <LevelUp>
-            <Skull />
-            <Modal.Heading textAlign="center" margin="0.5em 0">Ye be level 5 now!</Modal.Heading>
-            <Modal.Quote textAlign="Center"  margin="0.5em 0">In an honest service there is thin commons, low wages, and hard labor...No, a merry life and a short one, shall be my motto.</Modal.Quote>
-            <Modal.Button onClick={this.props.toggleModalAction} width="60%">Continue</Modal.Button>
+            <Book />
+            <Modal.Heading textAlign="center" margin="0.25em 0">You have achieved level {this.props.currLevel.level}</Modal.Heading>
+            <Modal.Quote textAlign="Center"  margin="0.25em 0">{this.props.currLevel.levelUpMessage}</Modal.Quote>
+            <Modal.Button onClick={this.props.toggleModalAction} width="60%" margin="15px auto 30px auto">Continue</Modal.Button>
         </LevelUp>
     )
   }
@@ -43,7 +43,7 @@ class LevelUpModal extends Component {
 
 export default connect(
   (state) => ({
-    // Map state to props
+    currLevel: state.xpBarReducer.currLevel
   }),
   {
     toggleModalAction

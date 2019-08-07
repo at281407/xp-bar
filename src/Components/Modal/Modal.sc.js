@@ -10,7 +10,7 @@ import { SvgIcon } from '../_Elements/Icon.sc';
 import { Input } from '../_Elements/Form/Input.sc';
 import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
-import { Submit } from '../_Elements/Form/Submit.sc';
+import { Button } from '../_Elements/Form/Button.sc';
 import { Quote } from '../_Elements/Fonts/Quote.sc';
 
 export const Modal = styled.div`
@@ -25,6 +25,7 @@ export const Modal = styled.div`
     transition: visibility ${animations.fadeIn.time} linear;
     animation: ${props => props.isVisible ? animations.fadeIn.keyframes : animations.fadeOut.keyframes} ${animations.fadeIn.time} linear;
     visibility: ${props => props.isVisible ? "visible" : "hidden"};
+    z-index: 100;
 `;
 
 Modal.Overlay = Overlay
@@ -38,4 +39,4 @@ Modal.FormRow = FlexRow;
 Modal.FieldGroup = FlexCol;
 Modal.Input = Input;
 Modal.Label = Label;
-Modal.Button = Submit;
+Modal.Button = Button;
