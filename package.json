@@ -2,7 +2,7 @@
   "name": "xp-bar",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://at281407.github.io/xp-bar/",
+  "homepage": "https:dndxpbar.com/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -b build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
