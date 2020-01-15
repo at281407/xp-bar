@@ -4,14 +4,13 @@ import {connect} from 'react-redux';
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import {Header} from './Header.sc';
-
-import {SvgIcon} from '../_Elements/Icon.sc';
+import LockIcon from "../../Assets/images/lock-line.svg";
 
 class HeaderComp extends Component {
   render () {
     return (
         <Header>
-            {/*<SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction('login', true)}></SvgIcon>*/}
+          <img onClick={() => this.props.toggleModalAction('menu', true)} src={LockIcon} />
         </Header>
     )
   }

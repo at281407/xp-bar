@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {Modal} from './Modal.sc';
 
 import LevelUpModal from './LevelUpModal';
+import MenuModal from './MenuModal';
+import XpLogModal from './XpLogModal';
 
 class ModalComp extends Component {
 
@@ -11,6 +13,10 @@ class ModalComp extends Component {
       switch(this.props.modalType){
           case 'levelUp':
               return <LevelUpModal />
+          case 'menu':
+              return <MenuModal />
+          case 'xpLog':
+              return <XpLogModal />
           default:
               return <h1>Invalid Modal Type</h1>
       }

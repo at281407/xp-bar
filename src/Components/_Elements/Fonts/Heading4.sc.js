@@ -6,7 +6,7 @@ export const Heading4 = styled.h4`
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    width: ${props => props.width || "100%"};
+    width: ${props => props.width || "auto"};
     text-align: center;
     margin: ${props => props.margin || "0 auto"};
 `;

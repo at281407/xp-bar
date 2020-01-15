@@ -6,7 +6,8 @@ export const SvgIcon = styled.img`
     margin: ${props => props.margin || "0"};
     padding: ${props => props.padding || "0"};
     display: ${props => props.display || "block"};
+    color: ${props => props.color || "#333"};
     .fas {
-        color: black;
+        color: ${props => props.color || "#333"};
     }
 `;

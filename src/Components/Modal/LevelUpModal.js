@@ -14,7 +14,7 @@ export const LevelUp = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: flex-start;
-    width: 100%;
+    width: 300px;
     height: 100%;
 `;
 
