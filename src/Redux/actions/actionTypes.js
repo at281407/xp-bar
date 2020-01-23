@@ -7,3 +7,7 @@ export const DEACTIVATE_MODAL = 'DEACTIVATE_MODAL';
 export const SET_CURR_LEVEL = 'SET_CURR_LEVEL';
 export const SET_CURR_XP = 'SET_CURR_XP';
 export const CLEAR_XP = 'CLEAR_XP';
+
+//XP Table
+export const SET_TABLE_ROW = "SET_TABLE_ROW";
+export const REMOVE_TABLE_ROW = "REMOVE_TABLE_ROW";
