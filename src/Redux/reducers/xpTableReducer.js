@@ -2,6 +2,7 @@ import { SET_TABLE_ROW, REMOVE_TABLE_ROW } from '../actions/actionTypes';
 
 let initState = {
     areOptionsVisible: false,
+    xpTotal: 25234,
     xpRows: [
         {
             xp: 153,

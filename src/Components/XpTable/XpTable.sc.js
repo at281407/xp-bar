@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Button } from '../_Elements/Form/Button.sc';
 
 const XpTable = styled.table`
-  width: 70%;
+  width: 80%;
   height: auto;
   border-collapse: collapse
   td,th, {

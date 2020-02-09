@@ -13,9 +13,10 @@ import XpTable from '../XpTable'
 import {Heading4} from '../_Elements/Fonts/Heading4.sc';
 
 import Close from './Close.sc';
+import XpSummary from './XpSummary';
 
 const XpLog = styled.div`
-    width: 100%;
+    width: 70%;
     min-width: 800px
     height: 100%;
     padding: 10px;
@@ -25,11 +26,6 @@ const XpLog = styled.div`
 `;
 
 class XpLogModal extends Component {
-
-  state = {
-    username: "",
-    password: ""
-  }
 
   handleClose = () => {
       this.props.toggleModalAction(null, false);
@@ -58,7 +54,7 @@ class XpLogModal extends Component {
               </Modal.FormRow>
               <Modal.FormRow justifyContent="space-between"> 
                   <XpTable />
-                  <div width="20%"></div>
+                  <XpSummary />
               </Modal.FormRow>
           </XpLog>
       )
