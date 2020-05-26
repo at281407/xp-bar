@@ -5,13 +5,12 @@ import {App} from './App.sc.js';
 
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store';
-
 import {ThemeProvider} from 'styled-components';
 import * as themes from './themes.sc';
-import Header from './Components/Header/index';
-import XpBar from './Components/Bar/XpBar';
-import Modal from './Components/Modal/index';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
+
+import BarView from './Components/_Views/BarView'
 
 function AppContainer() {
 
@@ -19,9 +18,10 @@ function AppContainer() {
         <Provider store={configureStore()} >
             <ThemeProvider theme={themes.highFantasy}>
                 <App>
-                    <Header />
-                    <XpBar />
-                    <Modal />
+                    <Router>
+                        <Route path="/login">Login</Route>
+                        <Route path="/xpbar" component={BarView}/>
+                    </Router>
                 </App>
             </ThemeProvider>
         </Provider>
