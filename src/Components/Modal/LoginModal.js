@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom'
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
@@ -39,7 +40,7 @@ class LoginModal extends Component {
   render () {
     return (
         <Login>
-            <Modal.Form width="90%" onSubmit={this.handleSubmit}>
+            <Modal.Form width="90%" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
                 <Modal.FormRow>
                      {/*<Modal.Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" onClick={this.handleClose} />*/}
                 </Modal.FormRow>
@@ -68,6 +69,8 @@ class LoginModal extends Component {
                         })}
                     />
                 </Modal.FieldGroup>
+                <Modal.Button>Sign In</Modal.Button>
+                <p>Or, <Link to="./register">Register to get started!</Link></p>
             </Modal.Form>
         </Login>
     )

@@ -11,5 +11,8 @@ export const Button = styled.button`
     border-radius: 5px;
     background-color: #ffc22a;
     border: 1px solid #ffc22a;
-    margin: ${props => props.margin || "0 auto"}
+    margin: ${props => props.margin || "0 auto"};
+    &:hover {
+        background-color: #eda900;
+    }
 `;

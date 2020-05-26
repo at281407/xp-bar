@@ -11,6 +11,7 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
 import BarView from './Components/_Views/BarView'
+import LoginView from './Components/_Views/LoginView';
 
 function AppContainer() {
 
@@ -19,7 +20,7 @@ function AppContainer() {
             <ThemeProvider theme={themes.highFantasy}>
                 <App>
                     <Router>
-                        <Route path="/login">Login</Route>
+                        <Route path="/sign-in" component={LoginView} />
                         <Route path="/xpbar" component={BarView}/>
                     </Router>
                 </App>

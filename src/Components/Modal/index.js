@@ -3,7 +3,10 @@ import {connect} from 'react-redux';
 
 import {Modal} from './Modal.sc';
 
+import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
+
 import LevelUpModal from './LevelUpModal';
+import LoginModal from './LoginModal';
 
 class ModalComp extends Component {
 
@@ -11,6 +14,8 @@ class ModalComp extends Component {
       switch(this.props.modalType){
           case 'levelUp':
               return <LevelUpModal />
+          case 'login':
+              return <LoginModal />
           default:
               return <h1>Invalid Modal Type</h1>
       }
@@ -35,6 +40,6 @@ export default connect(
         isVisible: state.modalReducer.isVisible
     }),
     {
-        // Map actions/middleware to props
+        toggleModalAction
     }
 )(ModalComp);

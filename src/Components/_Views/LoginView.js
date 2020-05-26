@@ -1,16 +1,30 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import {connect} from 'react-redux';
 
-export default class LoginView extends Component {
-    static propTypes = {
-        prop: PropTypes
+import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
+
+
+import Modal from '../Modal/'
+import LogInModal from '../Modal/LoginModal';
+
+class LoginView extends Component {
+
+    componentDidMount() {
+        this.props.toggleModalAction("login", true);
     }
 
     render() {
         return (
-            <div>
-                
-            </div>
+            <Modal />
         )
     }
 }
+
+export default connect(
+    (state) => ({
+        // STate
+    }),
+    {
+        toggleModalAction
+    }
+)(LoginView);
