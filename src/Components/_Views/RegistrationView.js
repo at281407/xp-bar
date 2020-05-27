@@ -16,7 +16,7 @@ import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
 import { Quote } from '../_Elements/Fonts/Quote.sc';
 
-const Login = styled.div`
+const Registration = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -24,9 +24,10 @@ const Login = styled.div`
     justify-content: center;
 `;
 
-class LoginView extends Component {
+class RegistrationView extends Component {
     
     state = {
+        email: "",
         username: "",
         password: ""
     }
@@ -50,20 +51,32 @@ class LoginView extends Component {
     }
 
     componentDidMount() {
-        this.props.toggleModalAction("login", true);
+        this.props.toggleModalAction("Registration", true);
     }
 
     render() {
         return (
             <ViewWrapper background="linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))">
-                <Login>
+                <Registration>
                     <Box padding="25px">
                         <Form width="90%" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
                         <FlexRow>
                             {/*<Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" onClick={this.handleClose} />*/}
                         </FlexRow>
-                        <Heading>Sign In</Heading>
-                        <p>Log In to create your own XP Bar for D&D 5e.</p>
+                        <Heading>Register</Heading>
+                        <p>Create your account to get started.</p>
+                        <FlexCol id="email" margin="0.25em 0">
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                                id="email"
+                                name="email"
+                                type="email"
+                                value={this.state.email}
+                                onChange={(e) => this.setState({
+                                    email: e.target.value
+                                })}
+                            />
+                        </FlexCol>
                         <FlexCol id="username" margin="0.25em 0">
                             <Label htmlFor="username">Username</Label>
                             <Input
@@ -88,11 +101,10 @@ class LoginView extends Component {
                                 })}
                             />
                         </FlexCol>
-                        <Button margin="20px 0 0 0">Sign In</Button>
-                        <p>Or, <Link to="/register">Register to get started!</Link></p>
+                        <Button margin="20px 0 0 0">Register</Button>
                     </Form>
                     </Box>
-                </Login>
+                </Registration>
             </ViewWrapper>
         )
     }
@@ -105,4 +117,4 @@ export default connect(
     {
         toggleModalAction
     }
-)(LoginView);
+)(RegistrationView);

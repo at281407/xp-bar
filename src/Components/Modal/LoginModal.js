@@ -8,8 +8,16 @@ import styled from 'styled-components';
 import {Modal} from './Modal.sc';
 
 const Login = styled.div`
-    width: 100%;
-    height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    border: 3px solid ${props => props.theme.borderColor};
+    border-radius: 5px;
+    z-index: 200;
 `;
 
 class LoginModal extends Component {

@@ -12,6 +12,7 @@ import * as serviceWorker from './serviceWorker';
 
 import BarView from './Components/_Views/BarView'
 import LoginView from './Components/_Views/LoginView';
+import RegistrationView from './Components/_Views/RegistrationView';
 
 function AppContainer() {
 
@@ -21,7 +22,8 @@ function AppContainer() {
                 <App>
                     <Router>
                         <Route path="/sign-in" component={LoginView} />
-                        <Route path="/xpbar" component={BarView}/>
+                        <Route path="/xpbar" component={BarView} />
+                        <Route path="/register" component={RegistrationView} />
                     </Router>
                 </App>
             </ThemeProvider>
