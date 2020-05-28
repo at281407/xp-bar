@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import axios from "axios";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
@@ -48,6 +49,13 @@ class RegistrationView extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const newUser = {
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password
+        }
+
+        console.log(newUser);
     }
 
     componentDidMount() {
@@ -60,8 +68,8 @@ class RegistrationView extends Component {
                 <Registration>
                     <Box padding="25px">
                         <Form width="90%" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
-                        <FlexRow>
-                            {/*<Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" onClick={this.handleClose} />*/}
+                        <FlexRow justifyContent="flex-start">
+                            <Link to="sign-in">Back</Link>
                         </FlexRow>
                         <Heading>Register</Heading>
                         <p>Create your account to get started.</p>
@@ -101,7 +109,7 @@ class RegistrationView extends Component {
                                 })}
                             />
                         </FlexCol>
-                        <Button margin="20px 0 0 0">Register</Button>
+                        <Button margin="20px 0 0 0" onSubmit={this.handleSubmit}>Register</Button>
                     </Form>
                     </Box>
                 </Registration>

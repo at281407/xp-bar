@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import loginReducer from './loginReducer'
+import authenticationReducer from './authenticationReducer'
 import modalReducer from './modalReducer'
 import xpBarReducer from './xpBarReducer'
 
 export default combineReducers({
-   loginReducer, 
+   authenticationReducer, 
    modalReducer,
    xpBarReducer
 });

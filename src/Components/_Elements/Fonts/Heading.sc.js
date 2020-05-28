@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Heading = styled.h1`
-    color: ${props => props.theme.borderColor};
+    color: ${props => props.theme.baseFontColor};
     font-size: 40px;
     width: ${props => props.width || "100%"};
     text-align: ${props => props.textAlign || "center"};

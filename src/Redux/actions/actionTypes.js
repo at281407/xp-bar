@@ -7,3 +7,7 @@ export const DEACTIVATE_MODAL = 'DEACTIVATE_MODAL';
 export const SET_CURR_LEVEL = 'SET_CURR_LEVEL';
 export const SET_CURR_XP = 'SET_CURR_XP';
 export const CLEAR_XP = 'CLEAR_XP';
+
+// Authentication
+export const SET_IS_AUTHENTICATED = 'SET_IS_AUTHENTICATED';
+export const TOGGLE_LOADING = 'TOGGLE_LOADING';
