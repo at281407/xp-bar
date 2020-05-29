@@ -1,8 +1,9 @@
-import { TOGGLE_LOADING, SET_IS_AUTHENTICATED } from '../actions/actionTypes';
+import { TOGGLE_LOADING, SET_IS_AUTHENTICATED, SET_ERRORS } from '../actions/actionTypes';
 
 let initState = {
     isAuthenticated: false,
-    isLoading: false
+    isLoading: false,
+    errors: []
 }
 
 export const authenticationReducer = (state = initState, action) => {
@@ -16,6 +17,11 @@ export const authenticationReducer = (state = initState, action) => {
         return {
             ...state,
             isLoading: action.loadingBool
+        }
+    case SET_ERRORS:
+        return {
+            ...state,
+            errors: action.errors
         }
     default:
         return state

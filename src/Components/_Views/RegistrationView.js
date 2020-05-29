@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import axios from "axios";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
+import {setErrorsAction} from '../../Redux/actions/setErrors'; 
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import { Heading } from '../_Elements/Fonts/Heading.sc';
@@ -16,6 +17,7 @@ import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
 import { Quote } from '../_Elements/Fonts/Quote.sc';
+
 
 const Registration = styled.div`
     width: 100%;
@@ -54,6 +56,13 @@ class RegistrationView extends Component {
             username: this.state.username,
             password: this.state.password
         }
+
+        axios
+        .post("/api/users/register", newUser)
+        .then(res => history.push("/login")) // re-direct to login on successful register
+        .catch(err =>
+            alert(err)
+        );
 
         console.log(newUser);
     }
@@ -123,6 +132,7 @@ export default connect(
         // STate
     }),
     {
-        toggleModalAction
+        toggleModalAction,
+        setErrorsAction
     }
 )(RegistrationView);
