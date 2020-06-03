@@ -10,5 +10,5 @@ export const CLEAR_XP = 'CLEAR_XP';
 
 // Authentication
 export const SET_ERRORS = 'SET_ERRORS';
-export const SET_IS_AUTHENTICATED = 'SET_IS_AUTHENTICATED';
+export const SET_CURR_USER = 'SET_CURR_USER';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';

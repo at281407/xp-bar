@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import axios from "axios";
+import {routes} from "../../Routes";
+import {setAuthToken} from '../../Services/setAuthToken'
+import jwt_decode from "jwt-decode";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
+import {setCurrentUser} from '../../Redux/actions/Authentication/setCurrentUser';
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import { Heading } from '../_Elements/Fonts/Heading.sc';
@@ -47,6 +52,28 @@ class LoginView extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const user = {
+            username: this.state.username,
+            password: this.state.password
+        }
+
+        axios.post("/api/users/login", user)
+          .then(res => {
+              alert("Login Success!");
+              const { token } = res.data;
+              localStorage.setItem("jwtToken", token);
+              // Set token to Auth header
+              setAuthToken(token);
+              // Decode token to get user data
+              const decoded = jwt_decode(token);
+              console.log(decoded);
+              // Set current user
+              this.props.setCurrentUser(decoded);
+              this.props.history.push(routes.signIn);
+          }) // re-direct to login on successful register
+          .catch(err =>
+              alert(err)
+          );
     }
 
     componentDidMount() {
@@ -88,8 +115,8 @@ class LoginView extends Component {
                                 })}
                             />
                         </FlexCol>
-                        <Button margin="20px 0 0 0">Sign In</Button>
-                        <p>Or, <Link to="/register">Register to get started!</Link></p>
+                        <Button margin="20px 0 0 0" onClick={this.handleSubmit}>Sign In</Button>
+                        <p>Or, <Link to={routes.registration}>Register to get started!</Link></p>
                     </Form>
                     </Box>
                 </Login>
@@ -103,6 +130,7 @@ export default connect(
         // STate
     }),
     {
-        toggleModalAction
+        toggleModalAction,
+        setCurrentUser
     }
 )(LoginView);

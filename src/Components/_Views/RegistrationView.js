@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import axios from "axios";
+import {routes} from "../../Routes";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
-import {setErrorsAction} from '../../Redux/actions/setErrors'; 
+import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import { Heading } from '../_Elements/Fonts/Heading.sc';
@@ -52,19 +53,19 @@ class RegistrationView extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const newUser = {
-            email: this.state.email,
             username: this.state.username,
+            email: this.state.email,
             password: this.state.password
         }
 
-        axios
-        .post("/api/users/register", newUser)
-        .then(res => history.push("/login")) // re-direct to login on successful register
-        .catch(err =>
-            alert(err)
-        );
-
-        console.log(newUser);
+        axios.post("/api/users/register", newUser)
+          .then(res => {
+              alert("Registration Success!");
+              this.props.history.push(routes.signIn);
+          }) // re-direct to login on successful register
+          .catch(err =>
+              alert(err)
+          );
     }
 
     componentDidMount() {
@@ -129,7 +130,7 @@ class RegistrationView extends Component {
 
 export default connect(
     (state) => ({
-        // STate
+        
     }),
     {
         toggleModalAction,

@@ -9,6 +9,7 @@ import {ThemeProvider} from 'styled-components';
 import * as themes from './themes.sc';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
+import { routes } from './Routes'
 
 import BarView from './Components/_Views/BarView'
 import LoginView from './Components/_Views/LoginView';
@@ -21,9 +22,9 @@ function AppContainer() {
             <ThemeProvider theme={themes.highFantasy}>
                 <App>
                     <Router>
-                        <Route path="/sign-in" component={LoginView} />
-                        <Route path="/xpbar" component={BarView} />
-                        <Route path="/register" component={RegistrationView} />
+                        <Route path={routes.signIn} component={LoginView} />
+                        <Route path={routes.xpBar} component={BarView} />
+                        <Route path={routes.registration} component={RegistrationView} />
                     </Router>
                 </App>
             </ThemeProvider>

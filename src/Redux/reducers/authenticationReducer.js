@@ -1,17 +1,19 @@
-import { TOGGLE_LOADING, SET_IS_AUTHENTICATED, SET_ERRORS } from '../actions/actionTypes';
+import { TOGGLE_LOADING, SET_CURR_USER, SET_ERRORS } from '../actions/actionTypes';
 
 let initState = {
     isAuthenticated: false,
+    user: {},
     isLoading: false,
     errors: []
 }
 
 export const authenticationReducer = (state = initState, action) => {
     switch (action.type) {
-    case SET_IS_AUTHENTICATED:
+    case SET_CURR_USER:
         return {
             ...state,
-            isAuthenticated: action.status
+            isAuthenticated: true,
+
         }
     case TOGGLE_LOADING:
         return {
