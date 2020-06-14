@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import {setCurrentUser} from '../../Redux/actions/Authentication/setCurrentUser';
+import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import { Heading } from '../_Elements/Fonts/Heading.sc';
@@ -20,6 +21,7 @@ import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
 import { Quote } from '../_Elements/Fonts/Quote.sc';
+import { Error } from '../_Elements/Form/Error.sc';
 
 const Login = styled.div`
     width: 100%;
@@ -66,18 +68,21 @@ class LoginView extends Component {
               setAuthToken(token);
               // Decode token to get user data
               const decoded = jwt_decode(token);
-              console.log(decoded);
               // Set current user
               this.props.setCurrentUser(decoded);
-              this.props.history.push(routes.signIn);
+              this.props.history.push(routes.dashboard);
           }) // re-direct to login on successful register
-          .catch(err =>
-              alert(err)
+          .catch(err => {
+                console.log(err);
+                this.props.setErrorsAction(err.toString());
+            }
           );
     }
 
     componentDidMount() {
-        this.props.toggleModalAction("login", true);
+        if(localStorage.getItem("jwtToken")){
+            this.props.history.push(routes.dashboard);
+        }
     }
 
     render() {
@@ -86,9 +91,7 @@ class LoginView extends Component {
                 <Login>
                     <Box padding="25px">
                         <Form width="90%" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
-                        <FlexRow>
-                            {/*<Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" onClick={this.handleClose} />*/}
-                        </FlexRow>
+                        <Error textAlign="center">{this.props.errors}</Error>
                         <Heading>Sign In</Heading>
                         <p>Log In to create your own XP Bar for D&D 5e.</p>
                         <FlexCol id="username" margin="0.25em 0">
@@ -126,11 +129,12 @@ class LoginView extends Component {
 }
 
 export default connect(
-    (state) => ({
-        // STate
+    (props) => ({
+        errors: props.authenticationReducer.errors
     }),
     {
         toggleModalAction,
-        setCurrentUser
+        setCurrentUser,
+        setErrorsAction
     }
 )(LoginView);

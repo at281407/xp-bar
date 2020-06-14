@@ -4,7 +4,7 @@ let initState = {
     isAuthenticated: false,
     user: {},
     isLoading: false,
-    errors: []
+    errors: ""
 }
 
 export const authenticationReducer = (state = initState, action) => {

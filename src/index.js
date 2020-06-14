@@ -14,6 +14,7 @@ import { routes } from './Routes'
 import BarView from './Components/_Views/BarView'
 import LoginView from './Components/_Views/LoginView';
 import RegistrationView from './Components/_Views/RegistrationView';
+import DashboardView from './Components/_Views/DashboardView';
 
 function AppContainer() {
 
@@ -25,6 +26,7 @@ function AppContainer() {
                         <Route path={routes.signIn} component={LoginView} />
                         <Route path={routes.xpBar} component={BarView} />
                         <Route path={routes.registration} component={RegistrationView} />
+                        <Route path={routes.dashboard} component={DashboardView} />
                     </Router>
                 </App>
             </ThemeProvider>
