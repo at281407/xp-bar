@@ -12,6 +12,7 @@ export const Header = styled.header`
     box-shadow: inset -2px 0px 2px rgba(51, 51, 51, 0.25);
     svg {
         max-width: 100%;
+        height: auto;
     }
     nav {
         font-size: 16px;

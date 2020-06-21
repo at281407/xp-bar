@@ -16,7 +16,10 @@ class DashboardView extends Component {
         return (
             <ViewWrapper background="linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))">
                 <Header />
-                <Dashboard><h1>DASHBOARD</h1></Dashboard>
+                <Dashboard>
+                    <h1>XP Logs</h1>
+                    <p>Select a table below to get started, or create a new table!</p>
+                </Dashboard>
             </ViewWrapper>
         )
     }
@@ -33,6 +36,9 @@ const Dashboard = styled.div`
      height: 100%;
      background: #fff;
      padding: 0 36px;
+     h1 {
+         margin-top: 36px;
+     }
 `;
 
 export default compose (
