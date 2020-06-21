@@ -9,10 +9,7 @@ export const Button = styled.button`
     font-size: 1em;
     font-weight: bold;
     border-radius: 5px;
-    background-color: #ffc22a;
-    border: 1px solid #ffc22a;
+    background-color: #7F54A5;
+    border: 1px solid #7F54A5;
     margin: ${props => props.margin || "0 auto"};
-    &:hover {
-        background-color: #eda900;
-    }
 `;

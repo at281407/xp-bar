@@ -4,14 +4,20 @@ import {connect} from 'react-redux';
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import {Header} from './Header.sc';
+import {Button} from '../_Elements/Form/Button.sc';
 
 import {SvgIcon} from '../_Elements/Icon.sc';
+import {ReactComponent as Logo} from '../../Assets/images/dndxpbar_logox2.svg';
 
 class HeaderComp extends Component {
   render () {
     return (
         <Header>
-            {/*<SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction('login', true)}></SvgIcon>*/}
+          <Logo />
+          <nav>
+            <a>XP LOGS</a>
+          </nav>
+          <Button margin="auto 0 0 0">Logout</Button>
         </Header>
     )
   }
