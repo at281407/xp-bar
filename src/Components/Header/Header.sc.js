@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import {rem} from '../../Services/remConverter';
 
 export const Header = styled.header`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     width: 100%;
-    padding: 36px;
+    padding: ${rem(36)};
     max-width: 189px;
     height: calc(100vh - 72px);
     background-color: #fff;
@@ -15,9 +16,9 @@ export const Header = styled.header`
         height: auto;
     }
     nav {
-        font-size: 16px;
+        font-size: ${rem(16)};
         line-height: 19px;
-        margin-top: 26px;
+        margin-top: ${rem(36)};
         font-weight: bold;
         color: #333333;
         cursor: pointer;

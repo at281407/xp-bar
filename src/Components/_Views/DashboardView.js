@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import Header from '../Header';
+import XpLogSelection from '../XpLogSelections';
 
 
 class DashboardView extends Component {
@@ -19,6 +20,7 @@ class DashboardView extends Component {
                 <Dashboard>
                     <h1>XP Logs</h1>
                     <p>Select a table below to get started, or create a new table!</p>
+                    <XpLogSelection />
                 </Dashboard>
             </ViewWrapper>
         )
