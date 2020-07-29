@@ -12,8 +12,8 @@ export const authenticationReducer = (state = initState, action) => {
     case SET_CURR_USER:
         return {
             ...state,
-            isAuthenticated: true,
-
+            user: action.user,
+            isAuthenticated: action.status
         }
     case TOGGLE_LOADING:
         return {

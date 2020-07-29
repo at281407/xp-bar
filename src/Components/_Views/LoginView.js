@@ -8,7 +8,7 @@ import {setAuthToken} from '../../Services/setAuthToken'
 import jwt_decode from "jwt-decode";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
-import {setCurrentUser} from '../../Redux/actions/Authentication/setCurrentUser';
+import {setCurrentUserAction} from '../../Redux/actions/Authentication/setCurrentUserAction';
 import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
 
 import {ViewWrapper} from '../_Elements/View.sc';
@@ -61,26 +61,25 @@ class LoginView extends Component {
 
         axios.post("/api/users/login", user)
           .then(res => {
-              alert("Login Success!");
-              const { token } = res.data;
-              localStorage.setItem("jwtToken", token);
+              console.log(res);
+              const token = res.data.token;
+              localStorage.setItem("token", res.data.token);
               // Set token to Auth header
               setAuthToken(token);
               // Decode token to get user data
               const decoded = jwt_decode(token);
               // Set current user
-              this.props.setCurrentUser(decoded);
+              console.log(decoded);
               this.props.history.push(routes.dashboard);
           }) // re-direct to login on successful register
           .catch(err => {
                 console.log(err);
-                this.props.setErrorsAction(err.toString());
             }
           );
     }
 
     componentDidMount() {
-        if(localStorage.getItem("jwtToken")){
+        if(localStorage.getItem("token")){
             this.props.history.push(routes.dashboard);
         }
     }
@@ -134,7 +133,7 @@ export default connect(
     }),
     {
         toggleModalAction,
-        setCurrentUser,
+        setCurrentUserAction,
         setErrorsAction
     }
 )(LoginView);

@@ -12,7 +12,7 @@ class LogSelectionComp extends Component {
     render() {
         return (
             <LogSelection>
-                <Link href="https://google.com">
+                <Link to="https://google.com">
                     <CircleImage src={this.props.imgSrc} />
                     <label>{this.props.name}</label>
                 </Link>

@@ -82,7 +82,7 @@ class RegistrationView extends Component {
     }
 
     componentDidMount() {
-        if(localStorage.getItem("jwtToken")){
+        if(localStorage.getItem("token")){
             this.props.history.push(routes.dashboard);
         }
     }

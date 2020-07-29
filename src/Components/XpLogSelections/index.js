@@ -5,14 +5,20 @@ import styled from 'styled-components';
 import LogSelection from './LogSelection';
 
 class XPLogSelectionsComp extends Component {
+
+    renderLogs = () => {
+        if(this.props.isAuthenticated){
+            return this.props.user.xpLogs.map(xpLog => {
+                return <LogSelection imgSrc={xpLog.imgSrc} name={xpLog.name} />
+            })
+        }
+    }
     
     render() {
         return (
             <XPLogSelections>
-                <LogSelection imgSrc="/images/logoSmall.png" name="Call of the Deep" />
-                <LogSelection imgSrc="/images/logoSmall.png" name="Call of the Deep" />
-                <LogSelection imgSrc="/images/logoSmall.png" name="Call of the Deep" />
-                <LogSelection imgSrc="/images/logoSmall.png" name="Call of the Deep" />
+                {this.renderLogs()}
+                <LogSelection imgSrc="/images/logoSmall.png" name="Add New Log" />
             </XPLogSelections>
         )
     }
@@ -28,4 +34,12 @@ const XPLogSelections = styled.div`
     }
 `;
 
-export default XPLogSelectionsComp;
+export default connect(
+    (state) => ({
+        user: state.authenticationReducer.user,
+        isAuthenticated: state.authenticationReducer.isAuthenticated
+    }),
+    {
+        
+    }
+)(XPLogSelectionsComp);

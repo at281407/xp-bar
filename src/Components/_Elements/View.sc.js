@@ -6,5 +6,5 @@ export const ViewWrapper = styled.div`
   height: 100%;
   background: ${props => props.background ? props.background : "#fff"};
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: ${props => props.flexFlow ? props.flexFlow : "row nowrap"};
 `;
