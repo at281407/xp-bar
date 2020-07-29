@@ -8,8 +8,6 @@ import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import {getCurrentLevel} from '../../Services/getCurrentLevel';
 
-import Header from '../Header/index';
-
 import {Bar} from './index.sc';
 import {Emblem} from './Emblem.sc';
 
