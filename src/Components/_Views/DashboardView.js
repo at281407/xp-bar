@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 import { withRouter } from "react-router";
 
 import {ViewWrapper} from '../_Elements/View.sc';
+import Modal from '../Modal/index';
 import Header from '../Header';
 import XpLogSelection from '../XpLogSelections';
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
@@ -19,6 +20,7 @@ class DashboardView extends Component {
     render() {
         return (
             <ViewWrapper background="linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))">
+                <Modal />
                 <Header />
                 <Dashboard>
                     <h1>XP Logs</h1>
@@ -44,7 +46,7 @@ class DashboardView extends Component {
             axios.post("/api/users/getAccountInfo", payload)
             .then(user => {
                 console.log(user);
-                this.props.setCurrentUserAction(user);
+                this.props.setCurrentUserAction(user.data);
             }) // re-direct to login on successful register
             .catch(err =>
                 console.log(err)
@@ -71,6 +73,6 @@ export default compose (
         isAuthenticated: state.authenticationReducer.isAuthenticated
     }),
     {
-        
+        setCurrentUserAction
     })
 )(DashboardView);

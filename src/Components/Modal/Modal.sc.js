@@ -12,6 +12,7 @@ import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
 import { Quote } from '../_Elements/Fonts/Quote.sc';
+import { Select } from '../_Elements/Form/Select.sc';
 
 export const Modal = styled.div`
     display: flex;
@@ -38,5 +39,6 @@ Modal.Form = Form;
 Modal.FormRow = FlexRow;
 Modal.FieldGroup = FlexCol;
 Modal.Input = Input;
+Modal.Select = Select;
 Modal.Label = Label;
 Modal.Button = Button;

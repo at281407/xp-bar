@@ -5,7 +5,7 @@ export const Box = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: ${props => props.width ? props.width : "500px"};
+    width: ${props => props.width ? props.width : "auto"};
     height: auto;
     background-color: #fff;
     border: 3px solid ${props => props.theme.borderColor};

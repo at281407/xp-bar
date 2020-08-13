@@ -7,6 +7,7 @@ import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import LevelUpModal from './LevelUpModal';
 import LoginModal from './LoginModal';
+import CreateLogModal from './CreateLogModal';
 
 class ModalComp extends Component {
 
@@ -16,6 +17,8 @@ class ModalComp extends Component {
               return <LevelUpModal />
           case 'login':
               return <LoginModal />
+          case 'createLog':
+              return <CreateLogModal />
           default:
               return <h1>Invalid Modal Type</h1>
       }

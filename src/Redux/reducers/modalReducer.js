@@ -17,13 +17,11 @@ export const modalReducer = (state = initState, action) => {
             isVisible: action.payload.modalActivityBool
         }
     case HIDE_MODAL:
-        console.log("hiding modal");
         return {
             ...state,
             isVisible: false
         }
     case DEACTIVATE_MODAL:
-        console.log("deactivating modal");
         return {
             ...state,
             modalType: "",
