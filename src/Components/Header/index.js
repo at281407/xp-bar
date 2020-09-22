@@ -24,7 +24,7 @@ class HeaderComp extends Component {
         <Header>
           <Logo />
           <nav>
-            <a>XP LOGS</a>
+            <Link to={routes.dashboard}>XP LOGS</Link>
           </nav>
           <Button margin="auto 0 0 0" onClick={this.handleLogout}>Logout</Button>
         </Header>

@@ -1,8 +1,9 @@
-import { TOGGLE_LOADING, SET_CURR_USER, SET_ERRORS } from '../actions/actionTypes';
+import { TOGGLE_LOADING, SET_CURR_USER, SET_ERRORS, SET_CURR_LOG } from '../actions/actionTypes';
 
 let initState = {
     isAuthenticated: false,
     user: {},
+    currentLog: {},
     isLoading: false,
     errors: ""
 }
@@ -19,6 +20,11 @@ export const authenticationReducer = (state = initState, action) => {
         return {
             ...state,
             isLoading: action.loadingBool
+        }
+    case SET_CURR_LOG:
+        return {
+            ...state,
+            currentLog: action.log
         }
     case SET_ERRORS:
         return {

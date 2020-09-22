@@ -52,7 +52,7 @@ class LoginModal extends Component {
                 <Modal.FormRow>
                      {/*<Modal.Close margin="1em 0 0 auto" width="20px" height="20px" padding="5px" onClick={this.handleClose} />*/}
                 </Modal.FormRow>
-                <Modal.Heading>Sign In</Modal.Heading>
+                <Modal.H1>Sign In</Modal.H1>
                 <Modal.FieldGroup id="username" margin="0.25em 0">
                     <Modal.Label htmlFor="username">Username</Modal.Label>
                     <Modal.Input

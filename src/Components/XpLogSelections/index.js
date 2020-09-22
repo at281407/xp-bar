@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {routes} from "../../Routes";
 
 import LogSelection from './LogSelection';
 
@@ -19,7 +20,8 @@ class XPLogSelectionsComp extends Component {
     renderLogs = () => {
         if(this.props.isAuthenticated){
             return this.props.user.xpLogs.map(xpLog => {
-                return <LogSelection key={xpLog._id} imgSrc={xpLog.imgSrc} name={xpLog.name}  link="#"/>
+                const link = "/account/log/" + xpLog._id;
+                return <LogSelection key={xpLog._id} imgSrc={xpLog.imgSrc} name={xpLog.name}  link={link} />
             })
         }
     }

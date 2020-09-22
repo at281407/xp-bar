@@ -70,7 +70,7 @@ class CreateLogModal extends Component {
             <Modal.FormRow justifyContent="flex-end">
                 <FontAwesomeIcon icon={Icons.faTimes} onClick={this.handleClose} size="sm"/>
             </Modal.FormRow>
-            <Modal.Heading>Create a Log</Modal.Heading>
+            <Modal.H1>Create a Log</Modal.H1>
             <Modal.FormRow>
             <Modal.FieldGroup id="logName" margin="0.25rem 15px" maxWidth="100%">
                 <Modal.Label htmlFor="logName">Log Name</Modal.Label>

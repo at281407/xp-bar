@@ -12,3 +12,4 @@ export const CLEAR_XP = 'CLEAR_XP';
 export const SET_ERRORS = 'SET_ERRORS';
 export const SET_CURR_USER = 'SET_CURR_USER';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+export const SET_CURR_LOG = 'SET_CURR_LOG';

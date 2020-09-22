@@ -12,7 +12,7 @@ import {setCurrentUserAction} from '../../Redux/actions/Authentication/setCurren
 import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
 
 import {ViewWrapper} from '../_Elements/View.sc';
-import { Heading } from '../_Elements/Fonts/Heading.sc';
+import { H1 } from '../_Elements/Fonts/Heading1.sc';
 import { Form } from '../_Elements/Form/Form.sc';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 import { Box } from '../Modal/Box.sc';
@@ -91,7 +91,7 @@ class LoginView extends Component {
                     <Box padding="25px">
                         <Form width="90%" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
                         <Error textAlign="center">{this.props.errors}</Error>
-                        <Heading>Sign In</Heading>
+                        <H1>Sign In</H1>
                         <p>Log In to create your own XP Bar for D&D 5e.</p>
                         <FlexCol id="username" margin="0.25em 0">
                             <Label htmlFor="username">Username</Label>

@@ -10,7 +10,7 @@ import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
 
 import {ViewWrapper} from '../_Elements/View.sc';
-import { Heading } from '../_Elements/Fonts/Heading.sc';
+import { H1 } from '../_Elements/Fonts/Heading1.sc';
 import { Form } from '../_Elements/Form/Form.sc';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 import { Box } from '../Modal/Box.sc';
@@ -118,7 +118,7 @@ class RegistrationView extends Component {
                                 <Link to="sign-in">Back</Link>
                             </FlexRow>
                             <Error textAlign="center">{this.props.errors}</Error>
-                            <Heading>Register</Heading>
+                            <H1>Register</H1>
                             <p>Create your account to get started.</p>
                             <FlexCol id="email" margin="0.25em 0">
                                 <Label htmlFor="email">Email</Label>

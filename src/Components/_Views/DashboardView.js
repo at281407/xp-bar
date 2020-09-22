@@ -32,25 +32,24 @@ class DashboardView extends Component {
     }
 
     componentDidMount() {
-        const token = localStorage.getItem("token");
-        if(!token){
-            this.props.history.push(routes.signIn);
-        }
-        else {
-            const decoded = jwt_decode(token)
-            console.log(decoded);
-            const payload = {
-                userId: decoded.id
+        if(!this.props.user._id){
+            const token = localStorage.getItem("token");
+            if(!token){
+                this.props.history.push(routes.signIn);
             }
-            console.log(payload);
-            axios.post("/api/users/getAccountInfo", payload)
-            .then(user => {
-                console.log(user);
-                this.props.setCurrentUserAction(user.data);
-            }) // re-direct to login on successful register
-            .catch(err =>
-                console.log(err)
-            );
+            else {
+                const decoded = jwt_decode(token)
+                const payload = {
+                    userId: decoded.id
+                }
+                axios.post("/api/users/getAccountInfo", payload)
+                .then(user => {
+                    this.props.setCurrentUserAction(user.data);
+                }) // re-direct to login on successful register
+                .catch(err =>
+                    console.log(err)
+                );
+            }
         }
     }
 }
