@@ -22,31 +22,57 @@ class XpLogTable extends Component {
 
   render () {
     return (
-        <Table>
-          <Table.Row>
-              <Table.Head>Col 1</Table.Head>
-              <Table.Head>Col 2</Table.Head>
-              <Table.Head>Col 3</Table.Head>
-              <Table.Head>Col 4</Table.Head>
-          </Table.Row>
-          <Table.Row>
-              <Table.Cell>Data 1</Table.Cell>
-              <Table.Cell>Data 2</Table.Cell>
-              <Table.Cell>Data 3</Table.Cell>
-              <Table.Cell>Data 1</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-              <Table.Cell>Data 1</Table.Cell>
-              <Table.Cell>Data 2</Table.Cell>
-              <Table.Cell>Data 3</Table.Cell>
-              <Table.Cell>Data 1</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-              <Table.Cell>Data 1</Table.Cell>
-              <Table.Cell>Data 2</Table.Cell>
-              <Table.Cell>Data 3</Table.Cell>
-              <Table.Cell>Data 1</Table.Cell>
-          </Table.Row>
+        <Table margin="40px 0 0 0">
+          <Table.Header>
+            <Table.Row>
+                <Table.Head textAlign="left" width="60%">Description</Table.Head>
+                <Table.Head textAlign="right" width="20%">XP Earned</Table.Head>
+                <Table.Head border="none"></Table.Head>
+                <Table.Head border="none"></Table.Head>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row>
+                <Table.Data textAlign="left" width="60%">
+                  <Input margin="4px 0" width="95%" />
+                </Table.Data>
+                <Table.Data textAlign="right" width="20%">
+                  <Input margin="4px 0" width="70%" />
+                </Table.Data>
+                <Table.Data border="none"></Table.Data>
+                <Table.Data border="none"></Table.Data>
+            </Table.Row>
+            <Table.Row>
+                <Table.Data textAlign="left" width="60%" padding="8px 4px">Slayed a bunch of Gerblins</Table.Data>
+                <Table.Data textAlign="right" width="20%" padding="8px 4px">800</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 3</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 1</Table.Data>
+            </Table.Row>
+            <Table.Row>
+                <Table.Data textAlign="left" width="60%" padding="8px 4px">Slayed a bunch of Gerblins</Table.Data>
+                <Table.Data textAlign="right" width="20%" padding="8px 4px">800</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 3</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 1</Table.Data>
+            </Table.Row>
+            <Table.Row>
+                <Table.Data textAlign="left" width="60%" padding="8px 4px">Slayed a bunch of Gerblins</Table.Data>
+                <Table.Data textAlign="right" width="20%" padding="8px 4px">800</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 3</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 1</Table.Data>
+            </Table.Row>
+            <Table.Row>
+                <Table.Data textAlign="left" width="60%" padding="8px 4px">Slayed a bunch of Gerblins</Table.Data>
+                <Table.Data textAlign="right" width="20%" padding="8px 4px">800</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 3</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 1</Table.Data>
+            </Table.Row>
+            <Table.Row>
+                <Table.Data textAlign="left" width="60%" padding="8px 4px">Slayed a bunch of Gerblins</Table.Data>
+                <Table.Data textAlign="right" width="20%" padding="8px 4px">800</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 3</Table.Data>
+                <Table.Data border="none" padding="8px 0">Data 1</Table.Data>
+            </Table.Row>
+          </Table.Body>
         </Table>
     )
   }

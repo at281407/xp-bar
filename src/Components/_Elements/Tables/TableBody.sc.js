@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const TableCell = styled.td`
+export const TableBody = styled.tbody`
     width: 100%;
 `;
