@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {routes} from "../../Routes";
+import { withRouter } from "react-router";
+import { compose } from 'redux'
 
 import LogSelection from './LogSelection';
 
@@ -17,11 +18,17 @@ class XPLogSelectionsComp extends Component {
         this.props.toggleModalAction("createLog", true);
     }
 
+    handleLink = (link) => {
+        if(!this.props.isLogRemoveActive){
+            this.props.history.push(link);
+        }
+    }
+
     renderLogs = () => {
         if(this.props.isAuthenticated){
             return this.props.user.xpLogs.map(xpLog => {
                 const link = "/account/log/" + xpLog._id;
-                return <LogSelection key={xpLog._id} imgSrc={xpLog.imgSrc} name={xpLog.name}  link={link} />
+                return <LogSelection key={xpLog._id} logId={xpLog._id} imgSrc={xpLog.imgSrc} name={xpLog.name}  onClick={() => this.handleLink(link)} onRemove={this.props.onRemove}/>
             })
         }
     }
@@ -48,12 +55,15 @@ const XPLogSelections = styled.div`
     }
 `;
 
-export default connect(
+export default compose (
+    withRouter,
+    connect(
     (state) => ({
         user: state.authenticationReducer.user,
-        isAuthenticated: state.authenticationReducer.isAuthenticated
+        isAuthenticated: state.authenticationReducer.isAuthenticated,
+        isLogRemoveActive: state.dashboardReducer.isLogRemoveActive
     }),
     {
         toggleModalAction
-    }
+    })
 )(XPLogSelectionsComp);

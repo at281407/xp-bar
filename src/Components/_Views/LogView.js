@@ -30,7 +30,7 @@ class LogView extends Component {
                     <FlexRow margin="36px 0 0 0" justifyContent="space-apart" alignItems="flex-start">
                         <FlexCol className="log--headings" justifyContent="flex-end" alignItems="flex-start">
                             <H1>{this.props.log.name}</H1>
-                            <p>Add your party's latest exploints to the table below, and your changes will bepushed to your xp table.</p>
+                            <p>Add your party's latest exploints to the table below, and your changes will save to your xp table.</p>
                         </FlexCol>
                         <FlexCol className="log--summary" justifyContent="flex-end" alignItems="flex-end">
                             <span className="log--totalXp"><b>Total XP:</b> { this.props.log.xpBars[0].currentXp}</span>

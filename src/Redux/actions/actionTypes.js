@@ -8,6 +8,9 @@ export const SET_CURR_LEVEL = 'SET_CURR_LEVEL';
 export const SET_CURR_XP = 'SET_CURR_XP';
 export const CLEAR_XP = 'CLEAR_XP';
 
+//Dashboard
+export const TOGGLE_LOG_REMOVE_ACTIVE = 'TOGGLE_LOG_REMOVE_ACTIVE';
+
 // Authentication
 export const SET_ERRORS = 'SET_ERRORS';
 export const SET_CURR_USER = 'SET_CURR_USER';
