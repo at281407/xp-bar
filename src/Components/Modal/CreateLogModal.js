@@ -53,14 +53,13 @@ class CreateLogModal extends Component {
       axios.post("/api/logs/createLog", payload)
           .then(user => {
               alert("New logs created!");
-              console.log(user.data);
               this.props.setCurrentUserAction(user.data)
               this.props.toggleModalAction(null, false);
           }) // re-direct to login on successful register
           .catch(err => {
                 console.log(err);
             }
-          );
+        );
   }
 
   render () {
@@ -100,6 +99,7 @@ class CreateLogModal extends Component {
                     <option>4</option>
                     <option>5</option>
                     <option>6</option>
+                    <option>7</option>
                     <option>8</option>
                     <option>9</option>
                     <option>10</option>

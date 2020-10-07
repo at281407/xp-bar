@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {rem} from '../../Services/remConverter';
 
 export const Header = styled.header`
+    position: fixed;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;

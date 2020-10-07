@@ -9,6 +9,7 @@ export const Table = styled.table`
     width: 100%;
     border-collapse: collapse;
     margin: ${props => props.margin || "0"};
+    margin-bottom: 20px;
     th, td {
         &::nth-child(1) { 
             text-align: left;

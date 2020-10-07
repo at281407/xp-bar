@@ -16,3 +16,4 @@ export const SET_ERRORS = 'SET_ERRORS';
 export const SET_CURR_USER = 'SET_CURR_USER';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const SET_CURR_LOG = 'SET_CURR_LOG';
+export const UPDATE_CURR_LOG = 'UPDATE_CURR_LOG';

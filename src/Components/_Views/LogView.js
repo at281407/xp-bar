@@ -34,7 +34,7 @@ class LogView extends Component {
                         </FlexCol>
                         <FlexCol className="log--summary" justifyContent="flex-end" alignItems="flex-end">
                             <span className="log--totalXp"><b>Total XP:</b> { this.props.log.xpBars[0].currentXp}</span>
-                            <span className="log--currentLevel"><b>Current Level:</b> {this.props.log.xpBars[0].currentLevel.level} </span>
+                            <span className="log--currentLevel"><b>Current Level:</b> {this.props.log.xpBars[0].currentLevel} </span>
                         </FlexCol>
                     </FlexRow>
                     <BarLink />
@@ -69,7 +69,7 @@ const Log = styled.div`
      max-width: 1000px;
      height: 100%;
      background: #fff;
-     padding: 0 36px;
+     padding: 0 36px 0 300px;
      align-items: flex-start;
      .log--summary {
          font-size: 16px;

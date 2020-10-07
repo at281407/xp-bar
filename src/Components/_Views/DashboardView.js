@@ -35,7 +35,7 @@ class DashboardView extends Component {
         return (
             <ViewWrapper background="linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))">
                 <Modal />
-                <Header />
+                <Header position="fixed" />
                 <Dashboard>
                     <FlexRow>
                         <FlexCol justifyContent="flex-start" alignItems="flex-start">
@@ -84,7 +84,7 @@ const Dashboard = styled.div`
      width: 100%;
      height: 100%;
      background: #fff;
-     padding: 0 36px;
+     padding: 0 36px 0 300px;
      h1 {
          margin-top: 36px;
      }

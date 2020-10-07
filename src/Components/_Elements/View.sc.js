@@ -7,4 +7,5 @@ export const ViewWrapper = styled.div`
   background: ${props => props.background ? props.background : "#fff"};
   display: flex;
   flex-flow: ${props => props.flexFlow ? props.flexFlow : "row nowrap"};
+  overflow-y: scroll;
 `;
