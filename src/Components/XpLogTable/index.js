@@ -54,6 +54,25 @@ class XpLogTable extends Component {
     })
   }
 
+  handleRemove = (deedId) => {
+    let payload = {
+      logId: this.props.log._id,
+      deedId: deedId
+    }
+    axios.post("/api/logs/removeDeed", payload)
+      .then(log => {
+          this.props.updateCurrentLogAction(log.data);
+          this.setState({
+            description: "",
+            xp: 0
+          })
+      }) // re-direct to login on successful register
+      .catch(err => {
+            console.log(err);
+        }
+    );
+  }
+
   renderHiddenStyles = () => {
     if(this.state.isRemoveVisible){
         return {
@@ -81,11 +100,11 @@ class XpLogTable extends Component {
     console.log(this.props.log);
     return deeds.map(deed => {
       return (
-        <Table.Row key={deed.date} dateCreated={deed.date}>
+        <Table.Row key={deed.date} >
               <Table.Data textAlign="left" width="60%" padding="8px 4px">{deed.description}</Table.Data>
               <Table.Data textAlign="right" width="20%" padding="8px 4px">{deed.xpRewarded}</Table.Data>
               <Table.Data border="none" padding="15px 0" style={this.renderHiddenStyles()}>
-                <FontAwesomeIcon icon={Icons.faTimes} onClick={this.handleClose} size="lg" color="#7F54A5"/> 
+                <FontAwesomeIcon icon={Icons.faTimes}  onClick={() => this.handleRemove(deed._id)} size="lg" color="#7F54A5"/> 
               </Table.Data>
               <Table.Data border="none" padding="15px 0"></Table.Data>
           </Table.Row>
