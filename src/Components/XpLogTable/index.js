@@ -10,6 +10,7 @@ import {Button} from '../_Elements/Form/Button.sc';
 import {Table} from '../_Elements/Tables/Table.sc';
 
 import {updateCurrentLogAction} from '../../Redux/actions/Authentication/updateCurrentLogAction';
+import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
 
 class XpLogTable extends Component {
 
@@ -24,6 +25,7 @@ class XpLogTable extends Component {
   }
 
   handleAddLog = () => {
+    this.props.setIsLoadingAction(true);
 
     if(this.state.description.length > 0 && this.state.xp > 0) {
     var payload = {
@@ -34,15 +36,16 @@ class XpLogTable extends Component {
 
     axios.post("/api/logs/addDeed", payload)
           .then(log => {
-            console.log(log.data);
               this.props.updateCurrentLogAction(log.data);
               this.setState({
                 description: "",
                 xp: 0
               })
+              this.props.setIsLoadingAction(false);
           }) // re-direct to login on successful register
           .catch(err => {
                 console.log(err);
+                this.props.setIsLoadingAction(false);
             }
            );
     }
@@ -55,6 +58,7 @@ class XpLogTable extends Component {
   }
 
   handleRemove = (deedId) => {
+    this.props.setIsLoadingAction(true);
     let payload = {
       logId: this.props.log._id,
       deedId: deedId
@@ -66,8 +70,10 @@ class XpLogTable extends Component {
             description: "",
             xp: 0
           })
+          this.props.setIsLoadingAction(false);
       }) // re-direct to login on successful register
       .catch(err => {
+            this.props.setIsLoadingAction(false);
             console.log(err);
         }
     );
@@ -169,9 +175,11 @@ class XpLogTable extends Component {
 export default withRouter(connect(
   (state) => ({
     // Map state to props
-    log: state.authenticationReducer.currentLog
+    log: state.authenticationReducer.currentLog,
+    isLoading: state.loadingReducer.isLoading
   }),
   {
-    updateCurrentLogAction
+    updateCurrentLogAction,
+    setIsLoadingAction
   }
 )(XpLogTable));

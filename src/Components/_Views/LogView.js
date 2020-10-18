@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 
 import BarLink from '../BarLink';
 import XpLogTable from '../XpLogTable';
+import Loading from '../Loading'
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import Modal from '../Modal/index';
@@ -46,7 +47,7 @@ class LogView extends Component {
 
     render() {
         return this.props.log.xpBars ? this.renderLogView() : (
-            <h1>Loading!</h1>
+            <Loading static={true} />
         )
     }
 

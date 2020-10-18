@@ -25,7 +25,6 @@ class ModalComp extends Component {
   }
 
   render () {
-    console.log('rendering');
     return (
         <Modal isVisible={this.props.isVisible}>
             <Modal.Overlay />
