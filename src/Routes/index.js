@@ -3,5 +3,5 @@ export const routes = {
     registration: "/account/registration",
     dashboard: "/account/dashboard",
     log: "/account/log/:id",
-    xpBar: "/xp-bar"
+    xpBar: "/xp-bar/:id"
 }

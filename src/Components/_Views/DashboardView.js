@@ -19,6 +19,7 @@ import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { H1 } from '../_Elements/Fonts/Heading1.sc';
 
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
+import { setIsLoadingAction } from '../../Redux/actions/Loading/setIsLoadingAction';
 import { toggleLogRemoveActiveAction } from '../../Redux/actions/Dashboard/toggleLogRemoveActiveAction';
 
 
@@ -60,6 +61,7 @@ class DashboardView extends Component {
                 this.props.history.push(routes.signIn);
             }
             else {
+                this.props.setIsLoadingAction(true);
                 const decoded = jwt_decode(token)
                 const payload = {
                     userId: decoded.id
@@ -67,10 +69,13 @@ class DashboardView extends Component {
                 axios.post("/api/users/getAccountInfo", payload)
                 .then(user => {
                     this.props.setCurrentUserAction(user.data);
+                    this.props.setIsLoadingAction(false);
+                    
                 }) // re-direct to login on successful register
-                .catch(err =>
+                .catch(err =>{
                     console.log(err)
-                );
+                    this.props.setIsLoadingAction(false);
+                });
             }
         }
     }
@@ -96,10 +101,12 @@ export default compose (
     (state) => ({
         user: state.authenticationReducer.user,
         isAuthenticated: state.authenticationReducer.isAuthenticated,
-        isLogRemoveActive: state.dashboardReducer.isLogRemoveActive
+        isLogRemoveActive: state.dashboardReducer.isLogRemoveActive,
+        isLoading: state.loadingReducer.isLoading
     }),
     {
         setCurrentUserAction,
-        toggleLogRemoveActiveAction
+        toggleLogRemoveActiveAction,
+        setIsLoadingAction
     })
 )(DashboardView);

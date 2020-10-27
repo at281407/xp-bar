@@ -10,6 +10,7 @@ import jwt_decode from "jwt-decode";
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import {setCurrentUserAction} from '../../Redux/actions/Authentication/setCurrentUserAction';
 import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
+import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import { H1 } from '../_Elements/Fonts/Heading1.sc';
@@ -29,6 +30,7 @@ const Login = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 50;
 `;
 
 class LoginView extends Component {
@@ -53,6 +55,7 @@ class LoginView extends Component {
     }
 
     handleSubmit = (e) => {
+        this.props.setIsLoadingAction(true);
         e.preventDefault();
         const user = {
             username: this.state.username,
@@ -74,6 +77,7 @@ class LoginView extends Component {
           }) // re-direct to login on successful register
           .catch(err => {
                 console.log(err);
+                this.setIsLoadingAction(false);
             }
           );
     }
@@ -134,6 +138,7 @@ export default connect(
     {
         toggleModalAction,
         setCurrentUserAction,
-        setErrorsAction
+        setErrorsAction,
+        setIsLoadingAction
     }
 )(LoginView);

@@ -15,6 +15,7 @@ import {CircleImage} from '../_Elements/Shapes/CircleImage.sc';
 import {label} from '../_Variables/fonts.sc';
 
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
+import { setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
 
 class LogSelectionComp extends Component {
 
@@ -38,10 +39,10 @@ class LogSelectionComp extends Component {
     }
 
     handleRemoveClick = () => {
+        this.props.setIsLoadingAction(true);
         const payload = {
             id: this.props.logId
         }
-        console.log(payload)
         axios.post("/api/logs/deleteLog", payload)
         .then(user => {
             const token = localStorage.getItem("token");
@@ -56,15 +57,18 @@ class LogSelectionComp extends Component {
                 axios.post("/api/users/getAccountInfo", payload)
                 .then(user => {
                     this.props.setCurrentUserAction(user.data);
+                    this.props.setIsLoadingAction(false);
                 }) // re-direct to login on successful register
-                .catch(err =>
-                    console.log(err)
-                );
+                .catch(err =>{
+                    console.log(err);
+                    this.props.setIsLoadingAction(false);
+                });
             }
         }) // re-direct to login on successful register
-        .catch(err =>
+        .catch(err => {
             console.log(err)
-        );
+            this.props.setIsLoadingAction(false);
+        });
     }
 
     render() {
@@ -132,6 +136,7 @@ export default compose (
         isLogRemoveActive: state.dashboardReducer.isLogRemoveActive
     }),
     {
-        setCurrentUserAction
+        setCurrentUserAction,
+        setIsLoadingAction
     })
 )(LogSelectionComp);

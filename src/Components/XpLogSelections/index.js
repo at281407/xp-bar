@@ -10,10 +10,6 @@ import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 class XPLogSelectionsComp extends Component {
 
-    handleOpenLog = () => {
-        
-    }
-
     handleCreateLog = () => {
         this.props.toggleModalAction("createLog", true);
     }
