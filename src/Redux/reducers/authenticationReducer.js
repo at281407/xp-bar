@@ -3,7 +3,8 @@ import { TOGGLE_LOADING, SET_CURR_USER, SET_ERRORS, SET_CURR_LOG, UPDATE_CURR_LO
 let initState = {
     isAuthenticated: false,
     user: {},
-    currentLog: {},
+    currentLog: {
+    },
     currTable: {},
     isLoading: false,
     errors: ""

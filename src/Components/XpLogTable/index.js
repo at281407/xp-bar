@@ -36,7 +36,11 @@ class XpLogTable extends Component {
 
     axios.post("/api/logs/addDeed", payload)
           .then(log => {
-              this.props.updateCurrentLogAction(log.data);
+              const newLog = {
+                xpLog: log.data,
+                table: this.props.table
+              }
+              this.props.updateCurrentLogAction(newLog);
               this.setState({
                 description: "",
                 xp: 0
@@ -65,7 +69,12 @@ class XpLogTable extends Component {
     }
     axios.post("/api/logs/removeDeed", payload)
       .then(log => {
-          this.props.updateCurrentLogAction(log.data);
+        console.log(log);
+        const newLog = {
+          xpLog: log.data,
+          table: this.props.table
+        }
+        this.props.updateCurrentLogAction(newLog);
           this.setState({
             description: "",
             xp: 0
@@ -175,7 +184,8 @@ class XpLogTable extends Component {
 export default withRouter(connect(
   (state) => ({
     // Map state to props
-    log: state.authenticationReducer.currentLog,
+    log: state.authenticationReducer.currentLog.xpLog,
+    table: state.authenticationReducer.currentLog.table,
     isLoading: state.loadingReducer.isLoading
   }),
   {

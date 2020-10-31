@@ -7,6 +7,7 @@ import {TableData} from "./TableData.sc";
 
 export const Table = styled.table`
     width: 100%;
+    max-width: ${props => props.maxWidth || "none"};
     border-collapse: collapse;
     margin: ${props => props.margin || "0"};
     margin-bottom: 20px;

@@ -27,13 +27,22 @@ export const Modal = styled.div`
     animation: ${props => props.isVisible ? animations.fadeIn.keyframes : animations.fadeOut.keyframes} ${animations.fadeIn.time} linear;
     visibility: ${props => props.isVisible ? "visible" : "hidden"};
     z-index: 100;
+    font-family: gris
 `;
+
+const ModalHeading = styled.h1`
+    font-family: 'Girassol', cursive;
+    font-size: 2.4rem;
+    text-align: center;
+    margin: 0.25em 0px;
+    line-height: 2.5rem;
+`
 
 Modal.Overlay = Overlay
 Modal.Box = Box
 Modal.Close = SvgIcon
 Modal.Icon = SvgIcon
-Modal.H1 = H1
+Modal.H1 = ModalHeading
 Modal.Quote = Quote;
 Modal.Form = Form;
 Modal.FormRow = FlexRow;

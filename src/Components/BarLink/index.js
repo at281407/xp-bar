@@ -66,6 +66,7 @@ export const BarLink = styled.div`
     flex-flow: column;
     justify-content: flex-start;
     margin-top: 20px;
+    width: 100%;
     input {
         max-width: calc(70% - 70px);
         height: 20px;
@@ -105,7 +106,7 @@ export default compose (
   withRouter,
   connect(
   (state) => ({
-      log: state.authenticationReducer.currentLog
+      log: state.authenticationReducer.currentLog.xpLog
   }),
   {
       setCurrentLogAction

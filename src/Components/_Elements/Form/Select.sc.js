@@ -5,6 +5,7 @@ export const Select = styled.select`
     height: 38px;
     margin: ${props => props.margin || "0"};
     color: #333333;
+    background-color: #FFF;
     border: 3px solid #e7e7e7;
     border-radius: 3px;
 `;

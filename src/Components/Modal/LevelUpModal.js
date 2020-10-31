@@ -15,7 +15,9 @@ export const LevelUp = styled.div`
     justify-content: center;
     align-items: flex-start;
     width: 100%;
+    max-width: 300px;
     height: 100%;
+    padding: 10px;
 `;
 
 class LevelUpModal extends Component {

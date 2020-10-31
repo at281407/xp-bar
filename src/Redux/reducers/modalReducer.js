@@ -2,7 +2,7 @@ import { SHOW_MODAL, HIDE_MODAL, DEACTIVATE_MODAL } from '../actions/actionTypes
 
 let initState = {
     // Global Modal
-    modalType: "",
+    modalType: "levelUp",
     isActive: false,
     isVisible: false
 }

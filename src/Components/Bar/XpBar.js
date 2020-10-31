@@ -38,23 +38,24 @@ class XpBarComp extends Component {
 
   componentDidMount() {
     this.setLocalXp();
-    window.addEventListener('beforeunload', this.handleXpStore);
 
     this.getLogInfo(data => {
       console.log(data);
       let xp = data.xpLog.xpBars[0].currentXp;
+      let table = data.table.table;
       this.props.setCurrXpAction(xp);
+      this.handleXpStore(xp);
       if(xp >= this.props.currLevel.nextLevel){
         setTimeout(function(){
           console.log("Before Levelup", xp);
-          let leftOverXp = getCurrentLevel(xp);
+          let leftOverXp = getCurrentLevel(xp, table);
           this.props.setCurrLevelAction(leftOverXp);
           this.props.setCurrXpAction(xp);
           this.props.toggleModalAction("levelUp", true);
         }.bind(this), 1000)
       }
       else {
-        let reLevel = getCurrentLevel(xp);
+        let reLevel = getCurrentLevel(xp, table);
         this.props.setCurrLevelAction(reLevel);
       }
     })
@@ -63,21 +64,21 @@ class XpBarComp extends Component {
   setLocalXp = () => {
 
     let localXp = localStorage.getItem('xp');
-    console.log("Getting current xp", localXp);
+    let localTable = localStorage.getItem('table');
     /* If local XP is stored, get current XP from local storage) */
     if(localXp){
       this.props.setCurrXpAction(localXp);
-      let newLevel = getCurrentLevel(localXp);
+
+      let parsedTable = JSON.parse(localTable);
+      let newLevel = getCurrentLevel(localXp, parsedTable);
       this.props.setCurrLevelAction(newLevel);
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', this.handleXpStore);
-  }
-
   handleXpStore = () => {
     localStorage.setItem('xp', this.props.currXp);
+    let tableString = JSON.stringify(this.props.table.table);
+    localStorage.setItem('table', tableString);
   }
 
   render () {
@@ -85,8 +86,6 @@ class XpBarComp extends Component {
 
       let currXp = this.props.currXp - this.props.currLevel.xpFloor;
       let goal = this.props.currLevel.nextLevel - this.props.currLevel.xpFloor
-      
-      console.log("Curr XP " + currXp, "goal " + goal);
 
       let percent = (currXp/goal) * 100;
       if(percent > 100){
@@ -118,7 +117,7 @@ export default connect(
   (props) => ({
     currXp: props.xpBarReducer.currXp,
     currLevel: props.xpBarReducer.currLevel,
-    table: props.authenticationReducer.table
+    table: props.authenticationReducer.currentLog.table
   }),
   {
     setCurrLevelAction,

@@ -8,6 +8,7 @@ import { withRouter } from "react-router";
 import BarLink from '../BarLink';
 import XpLogTable from '../XpLogTable';
 import Loading from '../Loading'
+import SystemTable from '../SystemTable';
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import Modal from '../Modal/index';
@@ -22,31 +23,40 @@ import { setCurrentLogAction} from '../../Redux/actions/Authentication/setCurren
 
 class LogView extends Component {
 
+    state= {
+        isLogSet: false
+    }
+
     renderLogView = () => {
         return (
             <ViewWrapper>
                 <Modal />
                 <Header />
                 <Log>
-                    <FlexRow margin="36px 0 0 0" justifyContent="space-apart" alignItems="flex-start">
-                        <FlexCol className="log--headings" justifyContent="flex-end" alignItems="flex-start">
-                            <H1>{this.props.log.name}</H1>
-                            <p>Add your party's latest exploints to the table below, and your changes will save to your xp table.</p>
-                        </FlexCol>
-                        <FlexCol className="log--summary" justifyContent="flex-end" alignItems="flex-end">
-                            <span className="log--totalXp"><b>Total XP:</b> { this.props.log.xpBars[0].currentXp}</span>
-                            <span className="log--currentLevel"><b>Current Level:</b> {this.props.log.xpBars[0].currentLevel} </span>
-                        </FlexCol>
-                    </FlexRow>
-                    <BarLink />
-                    <XpLogTable />
+                    <FlexCol className="log--loginfo" maxWidth="1000px;">
+                        <FlexRow margin="36px 0 0 0" justifyContent="space-apart" alignItems="flex-start">
+                            <FlexCol className="log--headings" justifyContent="flex-end" alignItems="flex-start">
+                                <H1>{this.props.log.name}</H1>
+                                <p>Add your party's latest exploints to the table below, and your changes will save to your xp table.</p>
+                            </FlexCol>
+                            <FlexCol className="log--summary" justifyContent="flex-end" alignItems="flex-end">
+                                <span className="log--totalXp"><b>Total XP:</b> { this.props.log.xpBars[0].currentXp}</span>
+                                <span className="log--currentLevel"><b>Current Level:</b> {this.props.log.xpBars[0].currentLevel} </span>
+                            </FlexCol>
+                        </FlexRow>
+                        <BarLink />
+                        <XpLogTable />
+                    </FlexCol>
+                    <FlexCol className="log--tableInfo" maxWidth="300px">
+                        <SystemTable />
+                    </FlexCol>
                 </Log>
             </ViewWrapper>
         )
     }
 
     render() {
-        return this.props.log.xpBars ? this.renderLogView() : (
+        return this.state.isLogSet ? this.renderLogView() : (
             <Loading static={true} />
         )
     }
@@ -60,15 +70,19 @@ class LogView extends Component {
         axios.post("/api/logs/getLog", payload)
             .then(log => {
                 console.log(log);
-                this.props.setCurrentLogAction(log.data.xpLog);
+                this.props.setCurrentLogAction(log.data);
+                this.setState({
+                    isLogSet: true
+                })
         })
     }
 }
 
 const Log = styled.div`
      width: 100%;
-     max-width: 1000px;
      height: 100%;
+     display: flex;
+     flex-flow: row nowrap;
      background: #fff;
      padding: 0 36px 0 300px;
      align-items: flex-start;
@@ -82,7 +96,7 @@ export default compose (
     connect(
     (state) => ({
         user: state.authenticationReducer.user,
-        log: state.authenticationReducer.currentLog
+        log: state.authenticationReducer.currentLog.xpLog
     }),
     {
         setCurrentLogAction,
