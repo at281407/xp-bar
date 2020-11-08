@@ -20,3 +20,7 @@ export const SET_CURR_LOG = 'SET_CURR_LOG';
 export const UPDATE_CURR_LOG = 'UPDATE_CURR_LOG';
 
 export const SET_IS_LOADING = 'SET_IS_LOADING';
+
+export const SHOW_ERROR_POPUP = 'SHOW_ERROR_POPUP';
+export const HIDE_ERROR_POPUP = 'HIDE_ERROR_POPUP';
+export const REMOVE_ERROR_POPUP = 'REMOVE_ERROR_POPUP';

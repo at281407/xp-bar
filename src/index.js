@@ -12,6 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import { routes } from './Routes'
 
 import Loading from './Components/Loading';
+import ErrorPopup from './Components/ErrorPupup';
 
 import BarView from './Components/_Views/BarView'
 import LoginView from './Components/_Views/LoginView';
@@ -26,6 +27,7 @@ function AppContainer() {
             <ThemeProvider theme={themes.highFantasy}>
                 <App>
                     <Loading />
+                    <ErrorPopup />
                     <Router>
                         <Route path={routes.signIn} component={LoginView} />
                         <Route path={routes.xpBar} component={BarView} />
