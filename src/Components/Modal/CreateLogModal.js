@@ -48,11 +48,10 @@ class CreateLogModal extends Component {
           logName: this.state.logName,
           startingLevel: this.state.startingLevel
       }
-      console.log(payload);
       
       axios.post("/api/logs/createLog", payload)
           .then(user => {
-              alert("New logs created!");
+              console.log(user);
               this.props.setCurrentUserAction(user.data)
               this.props.toggleModalAction(null, false);
           }) // re-direct to login on successful register

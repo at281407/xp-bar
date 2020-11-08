@@ -6,6 +6,7 @@ import {Modal} from './Modal.sc';
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 
 import LevelUpModal from './LevelUpModal';
+import ConfirmationModal from './ConfirmationModal';
 import LoginModal from './LoginModal';
 import CreateLogModal from './CreateLogModal';
 
@@ -19,6 +20,8 @@ class ModalComp extends Component {
               return <LoginModal />
           case 'createLog':
               return <CreateLogModal />
+          case 'confirmation':
+              return <ConfirmationModal />
           default:
               return <h1>Invalid Modal Type</h1>
       }
