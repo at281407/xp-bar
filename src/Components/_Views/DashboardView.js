@@ -18,10 +18,23 @@ import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { H1 } from '../_Elements/Fonts/Heading1.sc';
 
+import backgroundText from '../../Assets/images/natural_paper.png';
+
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
 import { setIsLoadingAction } from '../../Redux/actions/Loading/setIsLoadingAction';
 import { toggleLogRemoveActiveAction } from '../../Redux/actions/Dashboard/toggleLogRemoveActiveAction';
 
+
+const Dashboard = styled.div`
+     width: 100%;
+     height: 100%;
+     background: #fff;
+     margin: 0 5vw 0 calc(5vw + 261px);
+     padding: 0 25px 0 25px;
+     h1 {
+         margin-top: 36px;
+     }
+`;
 
 class DashboardView extends Component {
 
@@ -34,17 +47,18 @@ class DashboardView extends Component {
     }
 
     render() {
+        const backgroundTexture = `url(${backgroundText});`;
         return (
-            <ViewWrapper background="linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))">
+            <ViewWrapper background={backgroundTexture}>
                 <Modal />
                 <Header position="fixed" />
                 <Dashboard>
                     <FlexRow>
-                        <FlexCol justifyContent="flex-start" alignItems="flex-start">
+                        <FlexCol justifyContent="flex-start" alignItems="flex-start" width="100%" padding="0 20% 0 0" >
                             <H1>XP Logs</H1>
-                            <p>Select a table below to get started, or create a new table!</p>
+                            <p>Begin recording your party's epic deeds by adding a new log below.  Or, select an existing Log to update your party's progress.</p>
                         </FlexCol>
-                        <FlexCol alignItems="flex-end" margin="0 130px 0 0" fontSize="1rem">
+                        <FlexCol alignItems="flex-end" fontSize="1rem" width="auto">
                             <FontAwesomeIcon icon={Icons.faTrash} onClick={this.toggleRemoveDisplay} size="lg" color="#7F54A5" /> 
                         </FlexCol>
                     </FlexRow>
@@ -84,16 +98,6 @@ class DashboardView extends Component {
         this.getAccountInfo();
     }
 }
-
-const Dashboard = styled.div`
-     width: 100%;
-     height: 100%;
-     background: #fff;
-     padding: 0 36px 0 300px;
-     h1 {
-         margin-top: 36px;
-     }
-`;
 
 export default compose (
     withRouter,

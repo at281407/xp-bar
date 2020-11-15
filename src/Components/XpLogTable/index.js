@@ -11,13 +11,15 @@ import {Table} from '../_Elements/Tables/Table.sc';
 
 import {updateCurrentLogAction} from '../../Redux/actions/Authentication/updateCurrentLogAction';
 import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
+import { showErrorPopupAction } from '../../Redux/actions/Errors/showErrorPopupAction';
 
 class XpLogTable extends Component {
 
   state = {
     isRemoveVisible: false,
     description: "",
-    xp: 0
+    xp: 0,
+    isXpAddError: false
   }
   
   handleCopy = e => {
@@ -52,6 +54,11 @@ class XpLogTable extends Component {
                 this.props.setIsLoadingAction(false);
             }
            );
+    }
+    else {
+      this.setState({isXpAddError: true });
+      this.props.showErrorPopupAction(["Description/ XP Amount Required"]);
+      this.props.setIsLoadingAction(false);
     }
   }
 
@@ -146,6 +153,7 @@ class XpLogTable extends Component {
                       width="95%"
                       id="description"
                       name="description"
+                      hasErrors={this.state.isXpAddError}
                       type="input"
                       value={this.state.description}
                       onChange={(e) => this.setState({
@@ -159,6 +167,7 @@ class XpLogTable extends Component {
                       width="50%"
                       id="xp"
                       name="xp"
+                      hasErrors={this.state.isXpAddError}
                       type="number"
                       value={this.state.xp}
                       onChange={(e) => this.setState({
@@ -190,6 +199,7 @@ export default withRouter(connect(
   }),
   {
     updateCurrentLogAction,
-    setIsLoadingAction
+    setIsLoadingAction,
+    showErrorPopupAction
   }
 )(XpLogTable));
