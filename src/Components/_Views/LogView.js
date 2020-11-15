@@ -61,9 +61,9 @@ class LogView extends Component {
                                 <H1 margin="26px 0 0 0">{this.props.log.name}</H1>
                                 <P margin="8px 0 0 0">Add your party's latest exploints to the table below, and your changes will save to your xp table.</P>
                             </FlexCol>
-                            <FlexCol className="log--summary" justifyContent="flex-end" alignItems="flex-end">
-                                <span className="log--totalXp"><b>Total XP:</b> { this.props.log.xpBars[0].currentXp}</span>
-                                <span className="log--currentLevel"><b>Current Level:</b> {this.props.log.xpBars[0].currentLevel} </span>
+                            <FlexCol className="log--summary" justifyContent="flex-end" alignItems="flex-end" width="200px">
+                                <span className="log--totalXp"><b>Total XP:</b> {this.props.log.xpBars[0].currentXp}</span>
+                                <span className="log--currentLevel"><b>Current Level:</b>  {this.props.log.xpBars[0].currentLevel} </span>
                             </FlexCol>
                         </FlexRow>
                         <BarLink />

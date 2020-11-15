@@ -13,7 +13,6 @@ import {getCurrentLevel} from '../../Services/getCurrentLevel';
 import {Bar} from './index.sc';
 import {Emblem} from './Emblem.sc';
 import { Loading } from '../Loading';
-import { CurrXp } from './CurrXp.sc';
 
 class XpBarComp extends Component {
 
