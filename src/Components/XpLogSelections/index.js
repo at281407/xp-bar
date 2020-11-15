@@ -45,6 +45,7 @@ const XPLogSelections = styled.div`
     justify-content: flex-start;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: 20px;
     & > div {
         margin: 0 45px 22px 0;
         min-height:50px;

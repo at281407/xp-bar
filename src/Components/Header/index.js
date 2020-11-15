@@ -9,7 +9,6 @@ import {setCurrentUserAction} from '../../Redux/actions/Authentication/setCurren
 import {Header} from './Header.sc';
 import {Button} from '../_Elements/Form/Button.sc';
 
-import {SvgIcon} from '../_Elements/Icon.sc';
 import {ReactComponent as Logo} from '../../Assets/images/dndxpbar_logox2.svg';
 
 class HeaderComp extends Component {

@@ -13,8 +13,8 @@ export const validation = {
         return errors;
     },
     password: function(input){
-        let errors = input.length === 0 ? errorMessages.isRequired : "";  
-        errors = input.length > 0 && input.length < 6 ? errorMessages.passwordFormat :  "";
+        let errors = input.length <= 0 ? errorMessages.isRequired : "";  
+        errors = input.length < 6 ? errorMessages.passwordFormat :  "";
         return errors;
     }
 }

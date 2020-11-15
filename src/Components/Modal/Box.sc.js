@@ -6,6 +6,8 @@ export const Box = styled.div`
     justify-content: center;
     align-items: center;
     width: ${props => props.width ? props.width : "auto"};
+    max-width: ${props => props.maxWidth || "none"};
+    min-width: ${props => props.minWidth ? props.minWidth : "0px"};
     height: auto;
     background-color: #fff;
     border: 3px solid ${props => props.theme.borderColor};

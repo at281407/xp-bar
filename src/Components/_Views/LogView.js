@@ -30,6 +30,7 @@ class LogView extends Component {
     renderLogView = () => {
         return (
             <ViewWrapper>
+                <h1>HERE</h1>
                 <Modal />
                 <Header />
                 <Log>

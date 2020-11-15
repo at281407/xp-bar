@@ -4,7 +4,7 @@ html {
   width: 100%;
   height: 100%;
   background-color: #333;
-  background: url(https://vignette.wikia.nocookie.net/snk/images/9/95/Garougrantbglite.gif/revision/latest?cb=20100719080501) no-repeat center center fixed; 
+  background: #fff; 
   background-size: cover;
   background-repeat: no-repeat;
 }

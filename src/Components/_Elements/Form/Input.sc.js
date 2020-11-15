@@ -7,4 +7,7 @@ export const Input = styled.input`
     color: #333333;
     border: 3px solid #e7e7e7;
     border-radius: 3px;
+    ${props => props.hasErrors === "true" && `
+        border: 3px solid red;
+    `};
 `;

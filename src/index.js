@@ -29,7 +29,7 @@ function AppContainer() {
                     <Loading />
                     <ErrorPopup />
                     <Router>
-                        <Route path={routes.signIn} component={LoginView} />
+                        <Route exact path={routes.signIn} component={LoginView} />
                         <Route path={routes.xpBar} component={BarView} />
                         <Route path={routes.registration} component={RegistrationView} />
                         <Route path={routes.dashboard} component={DashboardView} />

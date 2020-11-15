@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
 
+import {removeErrorPopupAction} from '../../Redux/actions/Errors/removeErrorPopupAction';
+
 const ErrorPopup = styled.div`
     display: ${props => props.isVisible ? 'flex' : 'none'};
     flex-flow: column nowrap;
@@ -34,17 +36,13 @@ const ErrorPopup = styled.div`
 `;
 
 class ErrorPupupComp extends Component {
-  
-  constructor(props){
-      super(props);
-  }
 
   renderErrors = () => {
-      return this.props.errors.map(error => { 
+      return this.props.errors.map((error, i) => { 
         return (
-            <div className="errorPopup--errorWrapper">
-                <FontAwesomeIcon  className="errorPopup--errorClose" icon={Icons.faTimes} onClick={this.handleClose} size="sm"/>
-                <p>{error}</p>
+            <div className="errorPopup--errorWrapper" key={i}>
+                <FontAwesomeIcon  className="errorPopup--errorClose" icon={Icons.faTimes} onClick={() => this.props.removeErrorPopupAction(this.props.errors, i)} size="sm"/>
+                <p><b>Error: </b>{error}</p>
             </div>
         )
       })
@@ -65,6 +63,6 @@ export default connect(
     errors: state.errorReducer.messages
   }),
   {
-    
+    removeErrorPopupAction
   }
 )(ErrorPupupComp);

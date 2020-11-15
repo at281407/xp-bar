@@ -4,7 +4,7 @@ let initState = {
     messages: []
 }
 
-export const loadingReducer = (state = initState, action) => {
+export const errorReducer = (state = initState, action) => {
     switch (action.type) {
     case SHOW_ERROR_POPUP:
         return {
@@ -26,4 +26,4 @@ export const loadingReducer = (state = initState, action) => {
     }
 };
 
-export default loadingReducer;
+export default errorReducer;

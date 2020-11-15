@@ -8,6 +8,7 @@ import {validation} from '../../Services/validation';
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import {setErrorsAction} from '../../Redux/actions/Authentication/setErrorsAction'; 
+import {showErrorPopupAction} from '../../Redux/actions/Errors/showErrorPopupAction';
 
 import {ViewWrapper} from '../_Elements/View.sc';
 import { H1 } from '../_Elements/Fonts/Heading1.sc';
@@ -56,12 +57,38 @@ class RegistrationView extends Component {
         })
     }
 
+    validateRegistration = () => {
+        let errors = [];
+        const usernameCheck = validation["username"](this.state.username);
+        if(usernameCheck.length > 0){
+            errors.push(usernameCheck);
+            this.setState({
+                usernameError: usernameCheck
+            })
+        }
+        const passwordCheck = validation["password"](this.state.password);
+        if(passwordCheck.length > 0) {
+            errors.push(passwordCheck);
+            this.setState({
+                passwordError: passwordCheck
+            })
+        }
+        const emailCheck = validation["email"](this.state.email);
+        if(emailCheck.length > 0){
+            errors.push(emailCheck);
+            this.setState({
+                emailError: emailCheck
+            });
+        }
+        console.log(errors);
+        return errors.length > 0;
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
-        if(this.state.emailError.length > 0 || 
-           this.state.usernameError.length > 0 ||
-           this.state.passwordError.length > 0) {
-
+        const hasErrors = this.validateRegistration();
+        if(hasErrors) {
+               return;
         }
         else {
             const newUser = {
@@ -72,8 +99,12 @@ class RegistrationView extends Component {
 
             axios.post("/api/users/register", newUser)
             .then(res => {
-                alert("Registration Success!");
-                this.props.history.push(routes.signIn);
+                if(res.data.Errors){
+                    this.props.showErrorPopupAction(res.data.Errors)
+                }
+                else{
+                    this.props.history.push(routes.signIn);
+                }
             }) // re-direct to login on successful register
             .catch(err =>
                 this.props.setErrorsAction(err)
@@ -112,10 +143,10 @@ class RegistrationView extends Component {
         return (
             <ViewWrapper background="linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))">
                 <Registration>
-                    <Box padding="25px">
+                    <Box padding="25px" minWidth="500px">
                         <Form width="90%" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
                             <FlexRow justifyContent="flex-start">
-                                <Link to="sign-in">Back</Link>
+                                <Link to="/">Back</Link>
                             </FlexRow>
                             <Error textAlign="center">{this.props.errors}</Error>
                             <H1>Register</H1>
@@ -126,6 +157,7 @@ class RegistrationView extends Component {
                                     id="email"
                                     name="email"
                                     type="email"
+                                    hasErrors={this.state.emailError.length > 0}
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                     onBlur={this.handleBlur}
@@ -138,6 +170,7 @@ class RegistrationView extends Component {
                                     id="username"
                                     name="username"
                                     type="input"
+                                    hasErrors={this.state.usernameError.length > 0}
                                     value={this.state.username}
                                     onChange={this.handleChange}
                                     onBlur={this.handleBlur}
@@ -150,6 +183,7 @@ class RegistrationView extends Component {
                                     id="password"
                                     name="password"
                                     type="password"
+                                    hasErrors={this.state.passwordError.length > 0}
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                     onBlur={this.handleBlur}
@@ -171,6 +205,7 @@ export default connect(
     }),
     {
         toggleModalAction,
-        setErrorsAction
+        setErrorsAction,
+        showErrorPopupAction
     }
 )(RegistrationView);
