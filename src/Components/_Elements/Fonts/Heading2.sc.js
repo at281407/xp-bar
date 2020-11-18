@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import {rem} from '../../../Services/remConverter';
 
-export const Heading = styled.h1`
-    color: ${props => props.theme.borderColor};
-    font-size: 40px;
+export const H2 = styled.h2`
+    color: ${props => props.theme.baseFontColor};
+    font-size: ${rem('24px')};
     width: ${props => props.width || "100%"};
     text-align: ${props => props.textAlign || "center"};
     margin: ${props => props.margin || "0 auto"};

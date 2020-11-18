@@ -1,10 +1,11 @@
-import { SHOW_MODAL, HIDE_MODAL, DEACTIVATE_MODAL } from '../actions/actionTypes';
+import { SHOW_MODAL, HIDE_MODAL, DEACTIVATE_MODAL, SHOW_ERROR } from '../actions/actionTypes';
 
 let initState = {
     // Global Modal
     modalType: "",
     isActive: false,
-    isVisible: false
+    isVisible: false,
+    errorMessages: []
 }
 
 export const modalReducer = (state = initState, action) => {
@@ -17,17 +18,23 @@ export const modalReducer = (state = initState, action) => {
             isVisible: action.payload.modalActivityBool
         }
     case HIDE_MODAL:
-        console.log("hiding modal");
         return {
             ...state,
             isVisible: false
         }
     case DEACTIVATE_MODAL:
-        console.log("deactivating modal");
         return {
             ...state,
             modalType: "",
             isActive: false
+        }
+    case SHOW_ERROR:
+        return {
+            ...state,
+            modalType: "error",
+            isActive: true,
+            isVisible: true,
+            errorMessages: action.payload.errorMessages
         }
     default:
         return state

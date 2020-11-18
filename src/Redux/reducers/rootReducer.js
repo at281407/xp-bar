@@ -1,11 +1,17 @@
 import { combineReducers } from 'redux';
 
-import loginReducer from './loginReducer'
-import modalReducer from './modalReducer'
-import xpBarReducer from './xpBarReducer'
+import authenticationReducer from './authenticationReducer';
+import modalReducer from './modalReducer';
+import xpBarReducer from './xpBarReducer';
+import errorReducer from './errorReducer';
+import dashboardReducer from './dashboardReducer';
+import loadingReducer from './loadingReducer';
 
 export default combineReducers({
-   loginReducer, 
+   authenticationReducer, 
    modalReducer,
-   xpBarReducer
+   dashboardReducer,
+   xpBarReducer,
+   loadingReducer,
+   errorReducer
 });

@@ -12,5 +12,7 @@ export const swashbuckling = {
 export const highFantasy = {
     fillColor: "linear-gradient(to left, rgb(142, 45, 226), rgb(74, 0, 224))",
     borderColor: "#FFC10C",
+    baseFontColor: "#333",
+    secondaryFontCOlor: "#FFC10C",
     emblem: HelmSvg
 }

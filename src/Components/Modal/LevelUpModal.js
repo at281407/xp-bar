@@ -15,7 +15,9 @@ export const LevelUp = styled.div`
     justify-content: center;
     align-items: flex-start;
     width: 100%;
+    max-width: 300px;
     height: 100%;
+    padding: 10px;
 `;
 
 class LevelUpModal extends Component {
@@ -33,7 +35,7 @@ class LevelUpModal extends Component {
     return (
         <LevelUp>
             <Book />
-            <Modal.Heading textAlign="center" margin="0.25em 0">You have achieved level {this.props.currLevel.level}</Modal.Heading>
+            <Modal.H1 textAlign="center" margin="0.25em 0">You have achieved level {this.props.currLevel.level}</Modal.H1>
             <Modal.Quote textAlign="Center"  margin="0.25em 0">{this.props.currLevel.levelUpMessage}</Modal.Quote>
             <Modal.Button onClick={this.props.toggleModalAction} width="60%" margin="15px auto 30px auto">Continue</Modal.Button>
         </LevelUp>

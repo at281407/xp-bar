@@ -1,27 +1,42 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
+import {routes} from "../../Routes";
+import { Link, withRouter } from 'react-router-dom';
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
+import {setCurrentUserAction} from '../../Redux/actions/Authentication/setCurrentUserAction';
 
 import {Header} from './Header.sc';
+import {Button} from '../_Elements/Form/Button.sc';
 
-import {SvgIcon} from '../_Elements/Icon.sc';
+import {ReactComponent as Logo} from '../../Assets/images/dndxpbar_logox2.svg';
 
 class HeaderComp extends Component {
+  handleLogout = () => {
+    this.props.setCurrentUserAction({});
+    window.localStorage.removeItem("token");
+    this.props.history.push(routes.signIn);
+  }
+
   render () {
     return (
         <Header>
-            {/*<SvgIcon src="/images/lock-line.svg" margin="0.5em 0 0.5em auto" onClick={() => this.props.toggleModalAction('login', true)}></SvgIcon>*/}
+          <Logo />
+          <nav>
+            <Link to={routes.dashboard}>XP LOGS</Link>
+          </nav>
+          <Button margin="auto 0 0 0" onClick={this.handleLogout}>Logout</Button>
         </Header>
     )
   }
 }
 
-export default connect(
+export default withRouter(connect(
   (state) => ({
     // Map state to props
   }),
   {
-    toggleModalAction
+    toggleModalAction,
+    setCurrentUserAction
   }
-)(HeaderComp);
+)(HeaderComp));
