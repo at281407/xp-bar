@@ -1,6 +1,4 @@
 import ShipSvg  from './Assets/images/pirate_ship.svg';
-import BookSvg from './Assets/images/book.svg';
-import SpellSvg from './Assets/images/spell.svg';
 import HelmSvg from './Assets/images/helmet.svg';
 
 export const swashbuckling = {

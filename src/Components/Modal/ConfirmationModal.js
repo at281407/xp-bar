@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as Icons from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
 
 import styled from 'styled-components';
-import {Modal} from './Modal.sc';
 
 const Confirmation = styled.div`
     display: flex;

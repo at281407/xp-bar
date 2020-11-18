@@ -16,14 +16,12 @@ import BackArrow from '../BackArrow';
 import {ViewWrapper} from '../_Elements/View.sc';
 import { H1 } from '../_Elements/Fonts/Heading1.sc';
 import { Form } from '../_Elements/Form/Form.sc';
-import { P } from '../_Elements/Fonts/Paragraph.sc';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 import { Box } from '../Modal/Box.sc';
 import { Input } from '../_Elements/Form/Input.sc';
 import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
-import { Quote } from '../_Elements/Fonts/Quote.sc';
 import { Error } from '../_Elements/Form/Error.sc';
 
 
@@ -56,10 +54,6 @@ const Title = styled.span`
     letter-spacing: 5px;
     margin: 30px 0;
 `
-const Description = styled(P)`
-    margin: 30px 0 20px 0;
-`;
-
 class RegistrationView extends Component {
     
     state = {

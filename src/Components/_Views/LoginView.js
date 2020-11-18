@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import axios from "axios";
 import {routes} from "../../Routes";
 import {setAuthToken} from '../../Services/setAuthToken'
-import jwt_decode from "jwt-decode";
 
 import sideImage from '../../Assets/images/103-fafnir.png';
 import backgroundText from '../../Assets/images/natural_paper.png';
@@ -18,7 +17,6 @@ import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction
 import {showErrorPopupAction} from '../../Redux/actions/Errors/showErrorPopupAction';
 
 import {ViewWrapper} from '../_Elements/View.sc';
-import { H1 } from '../_Elements/Fonts/Heading1.sc';
 import { P } from '../_Elements/Fonts/Paragraph.sc';
 import { Form } from '../_Elements/Form/Form.sc';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
@@ -27,7 +25,6 @@ import { Input } from '../_Elements/Form/Input.sc';
 import { FlexCol } from '../_Elements/Flex/FlexCol.sc';
 import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
-import { Quote } from '../_Elements/Fonts/Quote.sc';
 import { Error } from '../_Elements/Form/Error.sc';
 
 const Login = styled.div`
@@ -103,8 +100,6 @@ class LoginView extends Component {
                 localStorage.setItem("token", res.data.token);
                 // Set token to Auth header
                 setAuthToken(token);
-                // Decode token to get user data
-                const decoded = jwt_decode(token);
                 // Set current user
                 this.props.history.push(routes.dashboard);
               }

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import configureStore from './Redux/store';
 import {ThemeProvider} from 'styled-components';
 import * as themes from './themes.sc';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import { routes } from './Routes'
 

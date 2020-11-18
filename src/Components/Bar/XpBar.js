@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import firebase from '../../firebase';
 import axios from 'axios';
 
 import {setCurrLevelAction} from '../../Redux/actions/XpBar/setCurrLevelAction'

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import gold from '../../Assets/images/gold.jpg';
 
 export const FillContainer = styled.div`
     position: relative;
