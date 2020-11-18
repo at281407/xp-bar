@@ -12,7 +12,6 @@ import * as Icons from "@fortawesome/free-solid-svg-icons";
 import {ViewWrapper} from '../_Elements/View.sc';
 import Modal from '../Modal/index';
 import Header from '../Header';
-import Loading from '../Loading'
 import XpLogSelection from '../XpLogSelections';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 import { FlexCol } from '../_Elements/Flex/FlexCol.sc';

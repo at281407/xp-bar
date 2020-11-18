@@ -3,7 +3,6 @@ import {animations} from "../_Variables/animations.sc"
 
 import { Overlay } from './Overlay.sc';
 import { Box } from './Box.sc';
-import { H1 } from '../_Elements/Fonts/Heading1.sc';
 import { Form } from '../_Elements/Form/Form.sc';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 import { SvgIcon } from '../_Elements/Icon.sc';

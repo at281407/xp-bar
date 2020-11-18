@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import {routes} from "../../Routes";
+
 import { compose } from 'redux'
-import { Link, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import {rem} from '../../Services/remConverter';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import {Input} from '../_Elements/Form/Input.sc';
-import {Button} from '../_Elements/Form/Button.sc';
 import {Label} from '../_Elements/Form/Label.sc';
 
-import {SvgIcon} from '../_Elements/Icon.sc';
-import {ReactComponent as Logo} from '../../Assets/images/dndxpbar_logox2.svg';
 import { FlexRow } from '../_Elements/Flex/FlexRow.sc';
 
 import { setCurrentLogAction} from '../../Redux/actions/Authentication/setCurrentLogAction';
@@ -55,7 +51,7 @@ class BarLinkComp extends Component {
             <CopyToClipboard text={this.state.barLink} onCopy={() => this.setState({isCopySuccess: true})}><button>Copy</button></CopyToClipboard>
             <span className="barLink__success">{this.handleCopySuccess()}</span>
           </FlexRow>
-          <a href={this.state.barLink} target="_blank">View xp bar</a>
+          <a href={this.state.barLink} rel="noopener noreferrer" target="_blank">View xp bar</a>
         </BarLink>
     )
   }
