@@ -39,14 +39,12 @@ class XpBarComp extends Component {
     this.setLocalXp();
 
     this.getLogInfo(data => {
-      console.log(data);
       let xp = data.xpLog.xpBars[0].currentXp;
       let table = data.table.table;
       this.props.setCurrXpAction(xp);
       this.handleXpStore(xp);
       if(xp >= this.props.currLevel.nextLevel){
         setTimeout(function(){
-          console.log("Before Levelup", xp);
           let leftOverXp = getCurrentLevel(xp, table);
           this.props.setCurrLevelAction(leftOverXp);
           this.props.setCurrXpAction(xp);
@@ -90,7 +88,6 @@ class XpBarComp extends Component {
       if(percent > 100){
         percent = 100;
       }
-      console.log(percent); 
 
       if(this.props.currXp >= 0 && this.props.currLevel){
         return (

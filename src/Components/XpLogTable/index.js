@@ -21,10 +21,6 @@ class XpLogTable extends Component {
     xp: 0,
     isXpAddError: false
   }
-  
-  handleCopy = e => {
-    console.log(e.target.value);
-  }
 
   handleAddLog = () => {
     this.props.setIsLoadingAction(true);
@@ -50,7 +46,6 @@ class XpLogTable extends Component {
               this.props.setIsLoadingAction(false);
           }) // re-direct to login on successful register
           .catch(err => {
-                console.log(err);
                 this.props.setIsLoadingAction(false);
             }
            );
@@ -76,7 +71,6 @@ class XpLogTable extends Component {
     }
     axios.post("/api/logs/removeDeed", payload)
       .then(log => {
-        console.log(log);
         const newLog = {
           xpLog: log.data,
           table: this.props.table
@@ -90,7 +84,6 @@ class XpLogTable extends Component {
       }) // re-direct to login on successful register
       .catch(err => {
             this.props.setIsLoadingAction(false);
-            console.log(err);
         }
     );
   }
@@ -119,7 +112,6 @@ class XpLogTable extends Component {
 
   renderDeeds = () => {
     let deeds = this.props.log.xpBars[0].deeds;
-    console.log(this.props.log);
     return deeds.map(deed => {
       return (
         <Table.Row key={deed.date} >

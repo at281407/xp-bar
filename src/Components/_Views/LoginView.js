@@ -99,7 +99,6 @@ class LoginView extends Component {
                   this.props.setIsLoadingAction(false);
               }
               else {
-                console.log(res);
                 const token = res.data.token;
                 localStorage.setItem("token", res.data.token);
                 // Set token to Auth header
@@ -107,13 +106,11 @@ class LoginView extends Component {
                 // Decode token to get user data
                 const decoded = jwt_decode(token);
                 // Set current user
-                console.log(decoded);
                 this.props.history.push(routes.dashboard);
               }
           }) // re-direct to login on successful register
           .catch(err => {
-                console.log(err);
-                this.props.showErrorPopupAction(err.Errors)
+                this.props.showErrorPopupAction([err.Errors])
                 this.props.setIsLoadingAction(false);
             }
           );

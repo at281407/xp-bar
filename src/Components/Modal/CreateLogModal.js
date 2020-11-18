@@ -42,7 +42,7 @@ class CreateLogModal extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.props.user);
+
       const payload = {
           userId: this.props.user._id,
           logName: this.state.logName,
@@ -51,7 +51,6 @@ class CreateLogModal extends Component {
       
       axios.post("/api/logs/createLog", payload)
           .then(user => {
-              console.log(user);
               this.props.setCurrentUserAction(user.data)
               this.props.toggleModalAction(null, false);
           }) // re-direct to login on successful register

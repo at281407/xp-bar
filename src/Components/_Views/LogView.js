@@ -91,7 +91,6 @@ class LogView extends Component {
         }
         axios.post("/api/logs/getLog", payload)
             .then(log => {
-                console.log(log);
                 this.props.setCurrentLogAction(log.data);
                 this.setState({
                     isLogSet: true

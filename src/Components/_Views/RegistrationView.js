@@ -109,7 +109,6 @@ class RegistrationView extends Component {
                 emailError: emailCheck
             });
         }
-        console.log(errors);
         return errors.length > 0;
     }
 
@@ -164,7 +163,6 @@ class RegistrationView extends Component {
 
     handleErrors = () => {
         this.props.errors.forEach(error => {
-            console.log(error);
             return error;
         })
     }

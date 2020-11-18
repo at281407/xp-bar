@@ -60,13 +60,11 @@ class LogSelectionComp extends Component {
                     this.props.setIsLoadingAction(false);
                 }) // re-direct to login on successful register
                 .catch(err =>{
-                    console.log(err);
                     this.props.setIsLoadingAction(false);
                 });
             }
         }) // re-direct to login on successful register
         .catch(err => {
-            console.log(err)
             this.props.setIsLoadingAction(false);
         });
     }

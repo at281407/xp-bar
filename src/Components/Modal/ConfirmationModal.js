@@ -42,13 +42,12 @@ class ConfirmationModal extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.props.user);
+
       const payload = {
           userId: this.props.user._id,
           logName: this.state.logName,
           startingLevel: this.state.startingLevel
       }
-      console.log(payload);
       
       axios.post("/api/logs/createLog", payload)
           .then(user => {
