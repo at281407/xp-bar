@@ -25,12 +25,11 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b build",
+    "deploy": "react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "mv build ./.netlify"
+    "eject": "react-scripts eject"
   },
   "proxy": "https://xp-bar-backend.herokuapp.com/",
   "eslintConfig": {
