@@ -6,6 +6,6 @@
    headers = {X-From = "Netlify"}
 
    [[redirects]]
-      from = "/*"
+      from = "/xp-bar/*"
       to = "/index.html"
       status = 200
