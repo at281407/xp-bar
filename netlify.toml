@@ -1,2 +1,0 @@
-[context.branch-deploy.environment]
-  NODE_ENV = "13.6.0"
