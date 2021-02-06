@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {App} from './App.sc.js';
@@ -7,9 +7,11 @@ import { Provider } from 'react-redux'
 import configureStore from './Redux/store';
 import {ThemeProvider} from 'styled-components';
 import * as themes from './themes.sc';
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import { routes } from './Routes'
+import ReactGA from "react-ga";
+import createHistory from 'history/createBrowserHistory'
 
 import Loading from './Components/Loading';
 import ErrorPopup from './Components/ErrorPupup';
@@ -20,15 +22,25 @@ import RegistrationView from './Components/_Views/RegistrationView';
 import DashboardView from './Components/_Views/DashboardView';
 import LogView from './Components/_Views/LogView';
 
+ReactGA.initialize('G-SSKG5W7GQF') 
+
+const history = createHistory()
+
+
 function AppContainer() {
 
+    history.listen(location => {
+        ReactGA.set({ page: location.pathname })
+        ReactGA.pageview(location.pathname)
+    });
+    
     return (
         <Provider store={configureStore()} >
             <ThemeProvider theme={themes.highFantasy}>
                 <App>
                     <Loading />
                     <ErrorPopup />
-                    <Router>
+                    <Router history={history}>
                         <Route exact path={routes.signIn} component={LoginView} />
                         <Route path={routes.xpBar} component={BarView} />
                         <Route path={routes.registration} component={RegistrationView} />

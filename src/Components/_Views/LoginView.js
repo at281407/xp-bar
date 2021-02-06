@@ -5,10 +5,12 @@ import styled from 'styled-components';
 import axios from "axios";
 import {routes} from "../../Routes";
 import {setAuthToken} from '../../Services/setAuthToken'
+import MetaTags from 'react-meta-tags';
 
 import sideImage from '../../Assets/images/103-fafnir.png';
 import backgroundText from '../../Assets/images/natural_paper.png';
 import {ReactComponent as Logo} from '../../Assets/images/dndxpbar_logox2.svg';
+import ReactGA from "react-ga";
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
 import {setCurrentUserAction} from '../../Redux/actions/Authentication/setCurrentUserAction';
@@ -112,6 +114,10 @@ class LoginView extends Component {
     }
 
     componentDidMount() {
+        
+        ReactGA.pageview(window.location.pathname);
+        console.log("Page view ", window.location.pathname);
+
         if(localStorage.getItem("token")){
             this.props.history.push(routes.dashboard);
         }
@@ -122,6 +128,11 @@ class LoginView extends Component {
         const backgroundTexture = `url(${backgroundText});`;
         return (
             <ViewWrapper background={backgroundTexture}>
+                <MetaTags>
+                    <title>Online XP Tracker for D&D 5e | DND Xp Bar</title>
+                    <meta name="description" content="Allows GMs to create a free experience tracker for their D&D 5e games. Log your party's deeds, and show them how close they are to leveling up." />
+                    <meta property="og:title" content="DND Xp Bar" />
+                </MetaTags>
                 <FlexRow height="100%">
                     <SlantedDiv height="100%" maxWidth="50%" background={backgroundImg}>
                         <Title>SLAY MONSTERS</Title>

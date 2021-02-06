@@ -15,6 +15,8 @@
     "react-admin": "^3.5.3",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.8.1",
+    "react-ga": "^3.3.0",
+    "react-meta-tags": "^1.0.1",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.4",
