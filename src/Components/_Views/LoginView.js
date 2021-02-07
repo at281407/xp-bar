@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import axios from "axios";
 import {routes} from "../../Routes";
 import {setAuthToken} from '../../Services/setAuthToken'
-import MetaTags from 'react-meta-tags';
 
 import sideImage from '../../Assets/images/103-fafnir.png';
 import backgroundText from '../../Assets/images/natural_paper.png';
@@ -128,55 +127,51 @@ class LoginView extends Component {
         const backgroundTexture = `url(${backgroundText});`;
         return (
             <ViewWrapper background={backgroundTexture}>
-                <MetaTags>
-                    <title>Online XP Tracker for D&D 5e | DND Xp Bar</title>
-                    <meta name="description" content="Allows GMs to create a free experience tracker for their D&D 5e games. Log your party's deeds, and show them how close they are to leveling up." />
-                    <meta property="og:title" content="DND Xp Bar" />
-                </MetaTags>
                 <FlexRow height="100%">
                     <SlantedDiv height="100%" maxWidth="50%" background={backgroundImg}>
                         <Title>SLAY MONSTERS</Title>
                         <Title>LOG YOUR DEEDS</Title>
                         <Title>LEVEL UP</Title>
-                        </SlantedDiv>
+                    </SlantedDiv>
                     <SlantedDiv>
-                    <Login>
-                        <Box padding="35px" maxWidth="425px">
-                            <Form width="90%" max-width="420px" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
-                                <Error textAlign="center">{this.props.errors}</Error>
-                                <Logo  width="60%" margin="0" />
-                                <Description>Sign In to create an XP Bar for your game and share it with your party.</Description>
-                                <FlexCol id="username" margin="0.5em 0">
-                                    <Label htmlFor="username">Username</Label>
-                                    <Input
-                                        id="username"
-                                        name="username"
-                                        type="input"
-                                        value={this.state.username}
-                                        onChange={(e) => this.setState({
-                                            username: e.target.value
-                                        })}
-                                    />
-                                </FlexCol>
-                                <FlexCol id="password" margin="0.25em 0">
-                                    <Label htmlFor="password">Password</Label>
-                                    <Input
-                                        id="password"
-                                        name="password"
-                                        type="password"
-                                        value={this.state.password}
-                                        onChange={(e) => this.setState({
-                                            password: e.target.value
-                                        })}
-                                    />
-                                </FlexCol>
-                                <Button margin="20px 0 0 0" onClick={this.handleSubmit}>Sign In</Button>
-                                <P margin="30px 0 0 0">Need an account? <Link to={routes.registration}>Register to get started!</Link></P>
-                            </Form>
-                        </Box>
-                    </Login>
+                        <Login>
+                            <Box padding="35px" maxWidth="425px">
+                                <Form width="90%" max-width="420px" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
+                                    <Error textAlign="center">{this.props.errors}</Error>
+                                    <Logo  width="60%" margin="0" />
+                                    <Description>Sign In to create an XP Bar for your game and share it with your party.</Description>
+                                    <FlexCol id="username" margin="0.5em 0">
+                                        <Label htmlFor="username">Username</Label>
+                                        <Input
+                                            id="username"
+                                            name="username"
+                                            type="input"
+                                            value={this.state.username}
+                                            onChange={(e) => this.setState({
+                                                username: e.target.value
+                                            })}
+                                        />
+                                    </FlexCol>
+                                    <FlexCol id="password" margin="0.25em 0">
+                                        <Label htmlFor="password">Password</Label>
+                                        <Input
+                                            id="password"
+                                            name="password"
+                                            type="password"
+                                            value={this.state.password}
+                                            onChange={(e) => this.setState({
+                                                password: e.target.value
+                                            })}
+                                        />
+                                    </FlexCol>
+                                    <Button margin="20px 0 0 0" onClick={this.handleSubmit}>Sign In</Button>
+                                    <P margin="30px 0 0 0">Need an account? <Link to={routes.registration}>Register to get started!</Link></P>
+                                </Form>
+                            </Box>
+                        </Login>
                     </SlantedDiv> 
                 </FlexRow>
+                
             </ViewWrapper>
         )
     }

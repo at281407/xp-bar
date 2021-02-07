@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {App} from './App.sc.js';
+import MetaTags from 'react-meta-tags';
 
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store';
@@ -38,6 +39,11 @@ function AppContainer() {
         <Provider store={configureStore()} >
             <ThemeProvider theme={themes.highFantasy}>
                 <App>
+                    <MetaTags>
+                        <title>Online XP Tracker for D&D 5e | DND Xp Bar</title>
+                        <meta name="description" content="Allows GMs to create a free experience tracker for their D&D 5e games. Log your party's deeds, and show them how close they are to leveling up." />
+                        <meta property="og:title" content="DND Xp Bar" />
+                    </MetaTags>
                     <Loading />
                     <ErrorPopup />
                     <Router history={history}>
