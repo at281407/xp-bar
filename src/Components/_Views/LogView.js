@@ -21,23 +21,29 @@ import {P} from '../_Elements/Fonts/Paragraph.sc';
 import {FlexRow} from '../_Elements/Flex/FlexRow.sc';
 import {FlexCol} from '../_Elements/Flex/FlexCol.sc';
 
+import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
 import { setCurrentLogAction} from '../../Redux/actions/Authentication/setCurrentLogAction';
 import BackArrow from '../BackArrow';
 
 
 const Log = styled.div`
-     width: 100%;
-     height: 100%;
+     position: relative;
      display: flex;
      flex-flow: row nowrap;
+     width: 100%;
+     height: auto;
      margin: 0 5vw 0 calc(261px + 5vw);
      padding: 0 20px 0 20px;
      background: #fff;
      align-items: flex-start;
      justify-content: space-between;
+     overflow: auto;
      .log--summary {
          font-size: 16px;
+     }
+     table {
+         position: relative;
      }
 `;
 
@@ -92,12 +98,14 @@ class LogView extends Component {
         const payload = {
             id: currentLogId
         }
+        this.props.setIsLoadingAction(true);
         axios.post("/api/logs/getLog", payload)
             .then(log => {
                 this.props.setCurrentLogAction(log.data);
+                this.props.setIsLoadingAction(false);
                 this.setState({
                     isLogSet: true
-                })
+            })
         })
     }
 }
@@ -111,6 +119,7 @@ export default compose (
     }),
     {
         setCurrentLogAction,
-        setCurrentUserAction
+        setCurrentUserAction,
+        setIsLoadingAction
     })
 )(LogView);
