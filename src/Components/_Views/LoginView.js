@@ -38,11 +38,7 @@ class LoginView extends Component {
     handleClose = () => {
         this.props.toggleModalAction(null, false);
     }
-
-    handleClick = () => {
-        alert(this.state.username);
-    }
-
+    
     handleInputChange = (e) =>{
         this.setState({
             [e.target.name]: e.target.value
@@ -82,7 +78,6 @@ class LoginView extends Component {
     componentDidMount() {
         
         ReactGA.pageview(window.location.pathname);
-        console.log("Page view ", window.location.pathname);
 
         if(localStorage.getItem("token")){
             this.props.history.push(routes.dashboard);

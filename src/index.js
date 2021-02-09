@@ -52,7 +52,7 @@ function AppContainer() {
                         <Route path={routes.xpBar} component={BarView} />
                         <Route path={routes.registration} component={RegistrationView} />
                         <Route path={routes.dashboard} component={DashboardView} />
-                        <Route path={routes.log} component={LogView} />
+                        <Route exact path={routes.log} component={LogView} />
                         
                         <Route component={NotFoundView} />
                     </Router>

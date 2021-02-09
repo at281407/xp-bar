@@ -14,7 +14,7 @@ export const Loading = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    z-index: 100;
+    z-index: 1000;
 `;
 
 class LoadingComp extends Component {
