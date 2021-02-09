@@ -28,39 +28,6 @@ import { Label } from '../_Elements/Form/Label.sc';
 import { Button } from '../_Elements/Form/Button.sc';
 import { Error } from '../_Elements/Form/Error.sc';
 
-const Login = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-`;
-
-const SlantedDiv = styled(FlexCol)`
-    &:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 0 25px 25px;
-        border-color: transparent transparent #F8F8F8 transparent;
-    }
-`
-
-const Title = styled.span`
-    font-family: 'Girassol', cursive;
-    font-size: 4rem;
-    color: #f3f3f3;
-    letter-spacing: 5px;
-    margin: 30px 0;
-`
-const Description = styled(P)`
-    margin: 30px 0 20px 0;
-`;
 class LoginView extends Component {
     
     state = {
@@ -176,6 +143,40 @@ class LoginView extends Component {
         )
     }
 }
+
+const Login = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+`;
+
+const SlantedDiv = styled(FlexCol)`
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 25px 25px;
+        border-color: transparent transparent #F8F8F8 transparent;
+    }
+`
+
+const Title = styled.span`
+    font-family: 'Girassol', cursive;
+    font-size: 4rem;
+    color: #f3f3f3;
+    letter-spacing: 5px;
+    margin: 30px 0;
+`
+const Description = styled(P)`
+    margin: 30px 0 20px 0;
+`;
 
 export default connect(
     (props) => ({

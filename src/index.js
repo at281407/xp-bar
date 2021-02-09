@@ -22,6 +22,7 @@ import LoginView from './Components/_Views/LoginView';
 import RegistrationView from './Components/_Views/RegistrationView';
 import DashboardView from './Components/_Views/DashboardView';
 import LogView from './Components/_Views/LogView';
+import NotFoundView from './Components/_Views/NotFoundView';
 
 ReactGA.initialize('G-SSKG5W7GQF') 
 
@@ -52,6 +53,8 @@ function AppContainer() {
                         <Route path={routes.registration} component={RegistrationView} />
                         <Route path={routes.dashboard} component={DashboardView} />
                         <Route path={routes.log} component={LogView} />
+                        
+                        <Route component={NotFoundView} />
                     </Router>
                 </App>
             </ThemeProvider>
