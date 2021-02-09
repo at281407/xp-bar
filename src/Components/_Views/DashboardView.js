@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactGA from "react-ga";
 import styled from 'styled-components';
 import { compose } from 'redux'
 import {connect} from 'react-redux';
@@ -94,6 +95,10 @@ class DashboardView extends Component {
     }
 
     componentDidMount() {
+
+        ReactGA.pageview(window.location.pathname);
+        console.log("Page view ", window.location.pathname);
+
         this.getAccountInfo();
     }
 }

@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import {connect} from 'react-redux';
 import axios from "axios";
 import { withRouter } from "react-router";
+import ReactGA from "react-ga";
 
 import backgroundText from '../../Assets/images/natural_paper.png';
 
@@ -45,7 +46,6 @@ class LogView extends Component {
     state= {
         isLogSet: false
     }
-    
 
     renderLogView = () => {
         const backgroundTexture = `url(${backgroundText});`;
@@ -84,6 +84,9 @@ class LogView extends Component {
     }
 
     componentDidMount() {
+
+        ReactGA.pageview(window.location.pathname);
+        
         let url = window.location.href;
         let currentLogId = url.split('/').pop();
         const payload = {

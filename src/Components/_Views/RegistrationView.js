@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import {routes} from "../../Routes";
 import {validation} from '../../Services/validation';
+import ReactGA from "react-ga";
 
 import sideImage from '../../Assets/images/103-fafnir.png';
 import backgroundText from '../../Assets/images/natural_paper.png';
@@ -135,6 +136,8 @@ class RegistrationView extends Component {
     }
 
     componentDidMount() {
+        ReactGA.pageview(window.location.pathname);
+        console.log("Page view ", window.location.pathname);
         if(localStorage.getItem("token")){
             this.props.history.push(routes.dashboard);
         }
