@@ -101,7 +101,7 @@ class LoginView extends Component {
                                 <Form width="90%" max-width="420px" padding="20px 0 25px 0" onSubmit={this.handleSubmit}>
                                     <Error textAlign="center">{this.props.errors}</Error>
                                     <Logo  width="60%" margin="0" />
-                                    <Description>Sign In to create an XP Bar for your game and share it with your party.</Description>
+                                    <Description>Sign In to create an XP Bar for your game and share it with your party.  <a href="https://dndxpbar.com/xp-bar/5fe51ddb03c5b7001726c565" target="_blank">See example here.</a></Description>
                                     <FlexCol id="username" margin="0.5em 0">
                                         <Label htmlFor="username">Username</Label>
                                         <Input
