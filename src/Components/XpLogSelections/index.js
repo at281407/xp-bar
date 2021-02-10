@@ -7,6 +7,7 @@ import { compose } from 'redux'
 import LogSelection from './LogSelection';
 
 import {toggleModalAction} from '../../Redux/actions/toggleModalAction';
+import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
 
 class XPLogSelectionsComp extends Component {
 
@@ -15,6 +16,7 @@ class XPLogSelectionsComp extends Component {
     }
 
     handleLink = (link) => {
+        this.props.setIsLoadingAction(true);
         if(!this.props.isLogRemoveActive){
             this.props.history.push(link);
         }
@@ -61,6 +63,7 @@ export default compose (
         isLogRemoveActive: state.dashboardReducer.isLogRemoveActive
     }),
     {
-        toggleModalAction
+        toggleModalAction,
+        setIsLoadingAction
     })
 )(XPLogSelectionsComp);

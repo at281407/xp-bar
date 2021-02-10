@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import {connect} from 'react-redux';
 import axios from "axios";
 import { withRouter } from "react-router";
+import ReactGA from "react-ga";
 
 import backgroundText from '../../Assets/images/natural_paper.png';
 
@@ -20,23 +21,29 @@ import {P} from '../_Elements/Fonts/Paragraph.sc';
 import {FlexRow} from '../_Elements/Flex/FlexRow.sc';
 import {FlexCol} from '../_Elements/Flex/FlexCol.sc';
 
+import {setIsLoadingAction} from '../../Redux/actions/Loading/setIsLoadingAction';
 import { setCurrentUserAction } from '../../Redux/actions/Authentication/setCurrentUserAction';
 import { setCurrentLogAction} from '../../Redux/actions/Authentication/setCurrentLogAction';
 import BackArrow from '../BackArrow';
 
 
 const Log = styled.div`
-     width: 100%;
-     height: 100%;
+     position: relative;
      display: flex;
      flex-flow: row nowrap;
+     width: 100%;
+     height: auto;
      margin: 0 5vw 0 calc(261px + 5vw);
      padding: 0 20px 0 20px;
      background: #fff;
      align-items: flex-start;
      justify-content: space-between;
+     overflow: auto;
      .log--summary {
          font-size: 16px;
+     }
+     table {
+         position: relative;
      }
 `;
 
@@ -45,7 +52,6 @@ class LogView extends Component {
     state= {
         isLogSet: false
     }
-    
 
     renderLogView = () => {
         const backgroundTexture = `url(${backgroundText});`;
@@ -84,17 +90,22 @@ class LogView extends Component {
     }
 
     componentDidMount() {
+
+        ReactGA.pageview(window.location.pathname);
+        
         let url = window.location.href;
         let currentLogId = url.split('/').pop();
         const payload = {
             id: currentLogId
         }
+        this.props.setIsLoadingAction(true);
         axios.post("/api/logs/getLog", payload)
             .then(log => {
                 this.props.setCurrentLogAction(log.data);
+                this.props.setIsLoadingAction(false);
                 this.setState({
                     isLogSet: true
-                })
+            })
         })
     }
 }
@@ -108,6 +119,7 @@ export default compose (
     }),
     {
         setCurrentLogAction,
-        setCurrentUserAction
+        setCurrentUserAction,
+        setIsLoadingAction
     })
 )(LogView);
