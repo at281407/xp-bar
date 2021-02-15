@@ -24,10 +24,9 @@ import DashboardView from './Components/_Views/DashboardView';
 import LogView from './Components/_Views/LogView';
 import NotFoundView from './Components/_Views/NotFoundView';
 
-ReactGA.initialize('G-SSKG5W7GQF') 
+ReactGA.initialize('UA-188957056-1') 
 
 const history = createHistory()
-
 
 function AppContainer() {
 
